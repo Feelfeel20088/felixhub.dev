@@ -1,0 +1,42 @@
+/* Button Container Styling */
+.void-button-container {
+    text-align: center;
+    margin-top: 20px;  /* Space between the typed text and button */
+}
+
+/* Enter Button Styling */
+.void-enter-button {
+    background-color: purple;  /* Button color */
+    color: white;  /* Text color */
+    display: inline-block;
+    padding: 12px 24px;  /* Padding inside the button */
+    border: none;  /* No border */
+    border-radius: 8px;  /* Rounded corners */
+    font-size: 18px;  /* Text size */
+    font-weight: bold;  /* Bold text */
+    cursor: pointer;  /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s;  /* Smooth transition for hover effects */
+}
+
+/* Hover Effect for Button */
+/* Hover Effect for Button */
+/* Active Button Effect */
+.void-enter-button:active {
+    background-color: indigo;  /* Change button color when pressed */
+    transform: scale(1);  /* Reset zoom effect when pressed */
+}
+
+/* Hover Effect for Button */
+.void-enter-button:hover {
+    background-color: darkviolet;  /* Darker shade of purple when hovered */
+    color: lavender;  /* Softer text color for better contrast */
+    transform: scale(1.1);  /* Slight zoom effect on hover */
+    outline: none;  /* Remove default browser outline */
+}
+
+/* Accessibility - Focused Button */
+.void-enter-button:focus {
+    outline: none;  /* Remove default focus outline */
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.6);  /* Glow effect for focused button */
+}
+

@@ -1,0 +1,172 @@
+/* main.css */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    padding-bottom: 40px;
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+    animation: fadeIn 1s ease-in-out, slideInBounce 1s ease-in-out;
+}
+
+/* Scroll image */
+.scroll-image {
+    width: 100%;
+    height: auto;
+    opacity: 0; /* Start as hidden */
+    margin-bottom: 30px;
+}
+
+/* Text box styling */
+.text-box {
+    width: 90%;
+    max-width: 1000px;
+    background: white;
+    border: 2px solid #ff7e5f;
+    border-radius: 20px;
+    padding: 50px;
+    margin: 30px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+.image-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.placeholder-image {
+    width: 150px;
+    height: 150px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    border: 2px solid #ff7e5f;
+    overflow: hidden;
+}
+.cursor {
+    color: white;
+    animation: blink 1s step-end infinite; /* Slower blinking cursor */
+    font-size: 100px;
+    visibility: visible;
+  }
+.moving-up {
+    animation: moveUp 2s ease-in-out forwards; /* Apply the animation */
+    position: relative; /* Ensure the element's position can change */
+  }
+
+.transparent-box {
+    width: 30%; /* 30% of the screen width */
+    height: 30%; /* 30% of the screen height */
+    background-color: rgba(255, 255, 255, 0); /* Transparent background */
+    position: absolute; /* Absolute positioning for centering */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to center the box */
+    border-radius: 10px;
+    /* border: 2px solid rgba(0, 0, 0, 0.5); */ /* Removed the border */
+}
+
+  
+.placeholder-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fade-in {
+    animation: fadeIn 1.5s forwards;
+}
+
+.typing-container {
+    font-size: 32px;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Style for the typed-text */
+.typed-text {
+    font-size: 100px; /* Adjust font size */
+    font-family: 'Courier New', Courier, monospace; /* Choose a monospaced font */
+    color: white; /* Text color */
+    display: inline; /* Ensure the text stays inline */
+    white-space: nowrap; /* Prevent line breaks */
+    position: relative; /* For possible positioning */
+    visibility: hidden;
+    opacity: 1;
+    font-weight: bold;
+    animation: fadeIn 2s forwards; /* Fade-in effect for the text */
+  }
+  
+
+
+/* FAQ box styling */
+.faq-box {
+    width: 90%;
+    max-width: 800px;
+    background: #f9f9f9;
+    border: 2px solid #ff7e5f;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    box-sizing: border-box;
+}
+
+/* FAQ item styling */
+.faq-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #000000;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .main-content {
+        padding-top: 60px; /* Reduce top padding for smaller screens */
+    }
+
+    .text-box {
+        width: 95%; /* Allow more flexibility for smaller screens */
+        padding: 30px; /* Reduce padding */
+        font-size: 18px; /* Smaller font size for mobile */
+    }
+
+    .faq-box {
+        width: 95%; /* Allow more flexibility for smaller screens */
+        padding: 30px; /* Reduce padding */
+    }
+
+    .faq-item {
+        padding: 8px; /* Adjust padding for smaller screens */
+        font-size: 16px; /* Smaller font size for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .text-box {
+        font-size: 16px; /* Even smaller font size for mobile */
+        padding: 20px; /* Reduce padding even further */
+    }
+
+    .faq-box {
+        width: 100%; /* Make the FAQ box take full width */
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .faq-item {
+        padding: 6px; /* Reduce padding further */
+        font-size: 14px; /* Smaller font size */
+    }
+}

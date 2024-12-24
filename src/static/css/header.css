@@ -1,0 +1,108 @@
+/* Base styles */
+header {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 60px;
+}
+
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: #ff7e5f;
+    text-align: center;
+    flex-grow: 1;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .header-content {
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .logo {
+        width: 50px; /* Smaller logo for smaller screens */
+    }
+
+    .title {
+        font-size: 20px; /* Smaller title */
+    }
+
+    /* Side menu for mobile */
+    nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 250px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    nav a {
+        margin: 15px 0;
+        font-size: 18px;
+        text-align: left;
+    }
+
+    .menu-toggle {
+        display: block; /* Show menu button */
+        cursor: pointer;
+    }
+
+    .menu-toggle div {
+        background-color: #ff7e5f;
+        height: 4px;
+        width: 30px;
+        margin: 5px 0;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    /* Active state for nav (when the menu is open) */
+    .nav-active {
+        transform: translateX(0); /* Slide menu in */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 45px; /* Smaller logo */
+    }
+
+    .title {
+        font-size: 18px; /* Smaller title */
+    }
+}

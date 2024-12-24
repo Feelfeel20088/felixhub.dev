@@ -1,0 +1,156 @@
+/* input.css */
+.input-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 2px solid #ff7e5f;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    box-sizing: border-box;
+    animation: fadeIn 2s ease-in-out, scaleUp 1s ease-in-out;
+}
+
+/* Input field style */
+.styled-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 2px solid #ff7e5f;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.styled-input:focus {
+    border-color: #ff9478;
+    box-shadow: 0 4px 8px rgba(255, 126, 95, 0.2);
+}
+
+/* Button style */
+.styled-button {
+    background-color: #ff7e5f;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.styled-button:hover {
+    background-color: #ff9478;
+}
+
+.styled-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.styled-button:disabled {
+    background-color: #d3d3d3;
+    color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Style for file input wrapper */
+.file-input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Hide the default file input */
+.fileInput {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+/* Custom label to act as the file input button */
+.custom-file-label {
+    display: inline-block;
+    background-color: #ff7e5f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Icon inside the button */
+.custom-file-label::before {
+    content: "📂 ";
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+
+/* Hover and active states for the custom button */
+.custom-file-label:hover {
+    background-color: #ff9478;
+}
+
+.custom-file-label:active {
+    transform: scale(0.98);
+}
+
+/* Preview container and image styles */
+.preview-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.image-preview {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .input-box {
+        flex-direction: column; /* Stack the input and button vertically */
+        align-items: stretch;
+    }
+
+    .styled-input, .styled-button {
+        width: 100%; /* Make the input and button take full width */
+    }
+
+    .custom-file-label {
+        width: 100%; /* Make the file input button take full width */
+        text-align: center;
+    }
+
+    .image-preview {
+        max-height: 200px; /* Reduce the preview size on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .styled-input {
+        font-size: 14px; /* Smaller font size for mobile screens */
+    }
+
+    .styled-button {
+        font-size: 14px; /* Smaller font size for mobile screens */
+    }
+
+    .custom-file-label {
+        font-size: 14px; /* Smaller font size for mobile screens */
+    }
+}

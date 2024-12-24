@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Effect</title>
+  <link rel="stylesheet" href="/static/css/navigation.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="/static/css/input.css">
+  <link rel="stylesheet" href="/static/css/scrollbar.css">
+  <link rel="stylesheet" href="/static/css/animations.css">
+  <link rel="stylesheet" href="/static/css/video.css">
+
+  <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+    <video class="video-background" autoplay loop muted>
+        <source src="static/video/index_backround.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="transparent-box">
+        <div class="typing-container">
+            <span class="typed-text" id="typed-text"></span><span class="cursor" id="cursor">|</span>
+        </div><br><br><br><br>
+        <div class="void-button-container">
+            <a href="/" class="void-enter-button">ENTER THE VOID -></a>
+            
+            
+        </div>
+        
+    </div>
+    
+    <script>
+        // Array of translations for "Hello"
+        const greetings = [
+            "Hello",     // English
+            "Hola",      // Spanish
+            "Bonjour",   // French
+            "Ciao",      // Italian
+            "こんにちは",  // Japanese
+            "Привет",    // Russian
+            "مرحبا",     // Arabic
+            "Hallo",     // Dutch/German
+            "你好",       // Chinese
+            "Olá",       // Portuguese
+            "Namaste",   // Hindi
+            "Hej",       // Swedish/Danish
+            "שלום",      // Hebrew
+            "Xin chào",  // Vietnamese
+            "Aloha",     // Hawaiian
+            "Kamusta",   // Filipino
+            "Molo",      // Xhosa
+            "Yassou"     // Greek
+        ];
+
+
+
+    
+        function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    
+        async function greetingWriter(greetings, elementId, typing_speed, delete_speed, mid_delay) {
+          const element = document.getElementById('typed-text');
+          for (let greeting of greetings) {
+            for (let char of greeting) {
+              element.innerHTML += char
+              await sleep(typing_speed)
+            }
+            await sleep(mid_delay)
+            for (let _ of greeting) {
+              greeting = greeting.substring(0, greeting.length -1)
+              element.innerHTML = greeting
+              await sleep(delete_speed || typing_speed)
+            }
+          }
+        }
+        greetingWriter(greetings, "typed-text", 200, 300, 300)
+
+        let currentTextIndex = 0;
+        const typedTexts = document.querySelectorAll('.typed-text');
+
+        // Function to make the next line visible with a fade-in effect
+        function showNextLine() {
+            if (currentTextIndex < typedTexts.length) {
+                typedTexts[currentTextIndex].classList.add('fade-in'); // Trigger fade-in animation
+                currentTextIndex++;
+            }
+        }
+
+    // Listen for key press to show the next text
+        document.addEventListener('keydown', showNextLine);
+    </script>
+</body>

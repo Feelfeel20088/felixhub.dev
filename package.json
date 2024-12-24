@@ -1,0 +1,38 @@
+{
+  "name": "webserver",
+  "version": "1.0.2",
+  "description": "a nice webserver to house my projects and api",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Feelfeel20088/felixhub.dev.git"
+  },
+  "keywords": [
+    "website",
+    "webserver",
+    "felixhub.dev"
+  ],
+  "author": "Felix Vujasin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Feelfeel20088/felixhub.dev/issues"
+  },
+  "homepage": "https://github.com/Feelfeel20088/felixhub.dev#readme",
+  "dependencies": {
+    "@fastify/cookie": "latest",
+    "@fastify/formbody": "latest",
+    "@fastify/helmet": "^13.0.0",
+    "@fastify/static": "latest",
+    "fastify": "^5.2.0",
+    "fastify-favicon": "latest",
+    "fs": "latest",
+    "path": "latest"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

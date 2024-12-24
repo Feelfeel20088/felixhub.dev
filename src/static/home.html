@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Link only the CSS files needed for this page -->
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/navigation.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/animations.css">
+    <link rel="stylesheet" href="/static/css/scrollbar.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="/static/images/favicon.ico" alt="Logo" class="logo">
+            <div class="title">felixhub.dev</div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/signup">Signup</a>
+                <a href="/AIpage">AI</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+                <a href="/static/projects.html">Projects</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="image-frame">
+            <div class="placeholder-image">
+                <a href="https://search.nixos.org/">
+                    <img src="/static/images/felix.jpg" alt="Felix">
+                </a>
+            </div>
+        </div>
+
+        <div class="text-box">
+            <h2>Hi I'm Felix</h2>
+            <p>
+                I’m a 15-year-old sophomore programmer who codes for fun! 
+                I aspire to attend DePaul University in Illinois to obtain a Computer Science degree, followed by a master's degree. 
+                I develop applications for profit but am open to working on any freelance project. 
+                I am passionate about problem-solving and innovation and believe that technology can transform our world!
+            </p>
+        </div>
+
+        <div class="text-box">
+            <h2>Some Information</h2>
+            This site is hosted on my local NixOS k3s cluster at my residence. It employs Fastify for serving and ngrok as a reverse proxy (more about why I chose ngrok can be found in my blog). Additionally, several other applications operate on different ports. The primary objectives of this website are:
+            <br> <strong>1.</strong> To showcase my projects and code to the public and potential interviewers.
+            <br> <strong>2.</strong> To expose my services, allowing my applications to access my k3s cluster.
+            <br>
+            You may notice the api.felixhub.dev subdomain; this includes endpoints for various services running on my k3s cluster. If you attempt to utilize them without authorization, you will be redirected to the login page, as access requires a special key. 
+            If you wish to access these services, please <a href="#contact">contact me</a>.
+        </div>
+
+        <div class="faq" id="faq">
+            <div class="faq-box">
+                <h2>FAQ</h2>
+                <div class="faq-item">
+                    <strong>Q: How can you download my programs?</strong><br>
+                    <strong>A:</strong> You can download both binaries and source code directly from my GitHub page. Just head to the "Projects" section for all the links and details.
+                </div>
+                <div class="faq-item">
+                    <strong>Q: What programming languages do you use?</strong><br>
+                    <strong>A:</strong> I primarily use Python, Java, and C. However, I have programmed applications and tools in Swift and JavaScript, and I'm always open to learning new languages!
+                </div>
+                <div class="faq-item">
+                    <strong>Q: Do you take freelance projects?</strong><br>
+                    <strong>A:</strong> Yes! I’m open to freelance opportunities. Feel free to reach out via the contact section.
+                </div>
+                <div class="faq-item">
+                    <strong>Q: How can I contact you?</strong><br>
+                    <strong>A:</strong> You can find my contact information in the contact section of this website.
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 felixhub.dev. All rights reserved.</p>
+    </footer>
+</body>
+</html>

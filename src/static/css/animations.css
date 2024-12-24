@@ -1,0 +1,109 @@
+/* animations.css */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveUp {
+    0% {
+      transform: translateY(0); /* Starting position */
+    }
+    100% {
+      transform: translateY(-100%); /* Move up by 100px */
+    }
+}
+  
+  
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+
+@keyframes blink {
+    0% {
+      opacity: 1; /* Fully visible */
+    }
+    50% {
+      opacity: 0; /* Invisible at halfway point */
+    }
+    100% {
+      opacity: 1; /* Visible again */
+    }
+  }
+@keyframes slideInBounce {
+    0% {
+        transform: translateX(-100%); /* Start off-screen */
+    }
+    60% {
+        transform: translateX(30px); /* Slide in and overshoot a bit */
+    }
+    80% {
+        transform: translateX(-15px); /* Move back a little, creating the bounce */
+    }
+    100% {
+        transform: translateX(0); /* Final position */
+    }
+}
+
+/* Mobile Responsiveness for Animations */
+@media (max-width: 768px) {
+    /* Adjust the slideIn animation for tablets */
+    .slideIn {
+        animation: slideIn 0.6s ease-out;
+    }
+
+    /* Adjust the bounce effect on small screens for smoother animation */
+    .slideInBounce {
+        animation: slideInBounce 0.8s ease-out;
+    }
+
+    /* Adjust fade-in effect for faster loading on mobile */
+    .fadeIn {
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    /* ScaleUp animation may be less noticeable on small screens, consider reducing the scale effect */
+    .scaleUp {
+        animation: scaleUp 0.5s ease-out;
+    }
+}
+
+/* For very small screens (phones) */
+@media (max-width: 480px) {
+    /* For small screens, make animations smoother by reducing the duration and adding ease-out */
+    .fadeIn {
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    .slideIn {
+        animation: slideIn 0.5s ease-out;
+    }
+
+    .slideInBounce {
+        animation: slideInBounce 0.6s ease-out;
+    }
+
+    .scaleUp {
+        animation: scaleUp 0.4s ease-out;
+    }
+}
