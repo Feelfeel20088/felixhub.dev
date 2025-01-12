@@ -36,7 +36,7 @@ class Loading_Bar:
                 for frame in self.animation:
                     if not self.running:
                         break
-                    print(f"\r\r{frame}", end="", flush=True)
+                    print(f"\r{frame}", end="", flush=True)
                     await asyncio.sleep(self.sleep)
         except asyncio.CancelledError:
             print("operation was canceled")

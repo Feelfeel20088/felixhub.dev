@@ -10,6 +10,19 @@
     }
 }
 
+
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0);  /* Initial position */
+    }
+    50% {
+        transform: translateY(-10px);  /* Move up */
+    }
+    100% {
+        transform: translateY(0);  /* Return to original position */
+    }
+}
+
 @keyframes slideIn {
     from {
         transform: translateX(-100%);
@@ -65,45 +78,3 @@
     }
 }
 
-/* Mobile Responsiveness for Animations */
-@media (max-width: 768px) {
-    /* Adjust the slideIn animation for tablets */
-    .slideIn {
-        animation: slideIn 0.6s ease-out;
-    }
-
-    /* Adjust the bounce effect on small screens for smoother animation */
-    .slideInBounce {
-        animation: slideInBounce 0.8s ease-out;
-    }
-
-    /* Adjust fade-in effect for faster loading on mobile */
-    .fadeIn {
-        animation: fadeIn 0.8s ease-in-out;
-    }
-
-    /* ScaleUp animation may be less noticeable on small screens, consider reducing the scale effect */
-    .scaleUp {
-        animation: scaleUp 0.5s ease-out;
-    }
-}
-
-/* For very small screens (phones) */
-@media (max-width: 480px) {
-    /* For small screens, make animations smoother by reducing the duration and adding ease-out */
-    .fadeIn {
-        animation: fadeIn 0.6s ease-out;
-    }
-
-    .slideIn {
-        animation: slideIn 0.5s ease-out;
-    }
-
-    .slideInBounce {
-        animation: slideInBounce 0.6s ease-out;
-    }
-
-    .scaleUp {
-        animation: scaleUp 0.4s ease-out;
-    }
-}

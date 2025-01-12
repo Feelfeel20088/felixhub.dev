@@ -2,9 +2,9 @@
   "name": "webserver",
   "version": "1.0.2",
   "description": "a nice webserver to house my projects and api",
-  "main": "server.js",
+  "main": "__init__.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "node src/__init__.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,13 +23,14 @@
   },
   "homepage": "https://github.com/Feelfeel20088/felixhub.dev#readme",
   "dependencies": {
-    "@fastify/cookie": "latest",
-    "@fastify/formbody": "latest",
-    "@fastify/helmet": "^13.0.0",
-    "@fastify/static": "latest",
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/formbody": "^8.0.1",
+    "@fastify/helmet": "^13.0.1",
+    "@fastify/static": "^8.0.3",
     "fastify": "^5.2.0",
-    "fastify-favicon": "latest",
+    "fastify-favicon": "^5.0.0",
     "fs": "latest",
+    "highlight.js": "^11.11.1",
     "path": "latest"
   },
   "devDependencies": {

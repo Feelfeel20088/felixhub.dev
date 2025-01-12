@@ -1,0 +1,92 @@
+/* Main Projects Page */
+.projects-page {
+    margin-top: 100px; /* Leave space for the fixed header */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    
+    
+}
+
+
+/* Project Card */
+.project-card {
+    width: 320px; /* Increased width for more space */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Project Image */
+.project-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Project Info */
+.project-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.project-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+}
+
+.project-description {
+    font-size: 0.9em;
+    color: #666;
+    margin: 10px 0;
+}
+
+.project-version {
+    font-size: 0.85em;
+    color: #999;
+    margin-bottom: 15px;
+}
+
+/* Buttons Section */
+.project-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* Reduced gap */
+    margin-top: 10px; /* Reduced top margin */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.btn {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 0.85em; /* Reduced font size */
+    padding: 6px 10px; /* Compact padding */
+    border-radius: 4px; /* Reduced border radius */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+.project-link {
+    text-decoration: none; /* Remove underline */
+}
+
+.project-link:hover {
+    text-decoration: none; /* Ensure underline stays removed on hover */
+}

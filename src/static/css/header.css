@@ -27,82 +27,79 @@ header {
 }
 
 .title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
-    color: #ff7e5f;
-    text-align: center;
-    flex-grow: 1;
+    font-size: 32px;  /* A larger size for better prominence */
+    font-weight: bold;  /* Makes the text stand out more */
+    color: #ff7e5f;  /* Keeping the original color */
+    text-align: center;  /* Center-aligns the title */
+    margin: 20px 0;  /* Adds vertical spacing for better placement */
+    letter-spacing: 1px;  /* Slight letter spacing for clarity */
+    line-height: 1.2;  /* Slightly increased line height for readability */
 }
+
 
 nav {
     display: flex;
     gap: 15px;
 }
 
-/* Mobile-specific styles */
-@media (max-width: 768px) {
-    .header-content {
-        justify-content: space-between;
-        padding: 10px;
-    }
-
-    .logo {
-        width: 50px; /* Smaller logo for smaller screens */
-    }
-
-    .title {
-        font-size: 20px; /* Smaller title */
-    }
-
-    /* Side menu for mobile */
-    nav {
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100vh;
-        width: 250px;
-        background-color: #fff;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 20px;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-    }
-
-    nav a {
-        margin: 15px 0;
-        font-size: 18px;
-        text-align: left;
-    }
-
-    .menu-toggle {
-        display: block; /* Show menu button */
-        cursor: pointer;
-    }
-
-    .menu-toggle div {
-        background-color: #ff7e5f;
-        height: 4px;
-        width: 30px;
-        margin: 5px 0;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-    }
-
-    /* Active state for nav (when the menu is open) */
-    .nav-active {
-        transform: translateX(0); /* Slide menu in */
-    }
+.badge {
+    display: inline-block;
+    background-color: #007bff; 
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 5px; 
+    vertical-align: middle; 
 }
 
-@media (max-width: 480px) {
-    .logo {
-        width: 45px; /* Smaller logo */
-    }
+nav a:hover .badge {
+    background-color: #0056b3; /* Darker blue for hover */
+}
 
-    .title {
-        font-size: 18px; /* Smaller title */
-    }
+nav {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Base styling for navigation links */
+nav a {
+    text-decoration: none;
+    color: #ff7e5f;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+/* Hover effect */
+nav a:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a soft shadow */
+    transform: scale(1.05); /* Subtle zoom effect */
+    font-weight: bolder;
+}
+
+/* Optional: Add an underline animation */
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ff7e5f;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+nav a:hover::after {
+    width: 80%; /* Expands the underline on hover */
 }

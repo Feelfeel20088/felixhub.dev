@@ -7,70 +7,67 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/base.css">
     <link rel="stylesheet" href="/static/css/header.css">
-    <link rel="stylesheet" href="/static/css/navigation.css">
-    <link rel="stylesheet" href="/static/css/main.css">
-    <link rel="stylesheet" href="/static/css/input.css">
-    <link rel="stylesheet" href="/static/css/footer.css">
-    <link rel="stylesheet" href="/static/css/scrollbar.css">
-    <link rel="stylesheet" href="/static/css/animations.css">
-    <link rel="stylesheet" href="/static/css/test.css">
+    <link rel="stylesheet" href="/static/css/projects.css">
+    <title>Projects | felixhub.dev</title>
 </head>
 <body>
     <!-- Navigation Header -->
     <header>
         <div class="header-content">
-            <img src="/static/images/favicon.ico" alt="Logo" class="logo"> <!-- Add your logo image here -->
+            <img src="/static/images/favicon.ico" alt="Logo" class="logo">
             <div class="title">felixhub.dev</div>
             <nav>
-                <a href="/">Home</a>
                 <a href="/signup">Signup</a>
-                <a href="/AIpage">AI</a>
-                <a href="#faq">FAQ</a>
+                <a href="/AIpage">AI <span class="badge">Beta</span></a>
                 <a href="#contact">Contact</a>
-                <a href="/static/projects.html">Projects</a>
+                <a href="/static/projects.html">Projects <span class="badge">Beta</span></a>
+                <a href="/about">About</a>
             </nav>
         </div>
     </header>
 
     <!-- Main Content -->
-    <div class="projects-page">
-        <div class="project-card">
-            <a href="https://github.com/yourusername/project1" target="_blank" class="project-link">
+    <main class="projects-page">
+        <!-- First Project Card wrapped in anchor tag for clickable behavior -->
+        <!-- use the entry html file name -->
+        <a href="/projects:kahootbot" class="project-link">
+            <div class="project-card">
                 <img src="images/kahoot-logo-symbol-editorial-free-vector-2611529195.jpg" alt="Project 1" class="project-image">
                 <div class="project-info">
-                    <h3 class="project-title">Kahoot bot</h3>
-                    <p class="project-description">Kahoot bot for flooding and playing kahoot games</p>
+                    <h3 class="project-title">Kahoot Bot</h3>
+                    <p class="project-description">Kahoot bot for flooding and playing Kahoot games.</p>
                     <span class="project-version">Version 1.0</span>
-                    <div class="project-links">
-                        <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
-                        <a href="https://example.com/raw-file" target="_blank">Download Raw File</a>
-                        <a href="https://example.com/docs" target="_blank">Documentation</a>
+                    <div class="project-buttons">
+                        <a href="https://github.com/yourusername/project1" target="_blank" class="btn">GitHub</a>
+                        <a href="https://example.com/raw-file" target="_blank" class="btn">Raw Download</a>
+                        <a href="https://example.com/docs" target="_blank" class="btn">Documentation</a>
                     </div>
                 </div>
-            </a>
-        </div>
-
-        <div class="project-card">
-            <a href="https://github.com/yourusername/project2" target="_blank" class="project-link">
+            </div>
+        </a>
+    
+        <!-- Second Project Card -->
+        <a href="/about" class="project-link">
+            <div class="project-card">
                 <img src="project2.jpg" alt="Project 2" class="project-image">
                 <div class="project-info">
                     <h3 class="project-title">Project 2</h3>
-                    <p class="project-description">A brief description of project 2.</p>
+                    <p class="project-description">A brief description of Project 2.</p>
                     <span class="project-version">Version 2.3</span>
-                    <div class="project-links">
-                        <a href="https://github.com/yourusername/project2" target="_blank">GitHub</a>
-                        <a href="https://example.com/raw-file" target="_blank">Download Raw File</a>
-                        <a href="https://example.com/docs" target="_blank">Documentation</a>
+                    <div class="project-buttons">
+                        <a href="https://github.com/yourusername/project2" target="_blank" class="btn">GitHub</a>
+                        <a href="https://example.com/raw-file" target="_blank" class="btn">Raw Download</a>
+                        <a href="https://example.com/docs" target="_blank" class="btn">Documentation</a>
                     </div>
                 </div>
-            </a>
-        </div>
-        <!-- Add more project cards here -->
-    </div>
+            </div>
+        </a>
+    </main>
+    
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 felixhub.dev. All rights reserved.</p>
+        <p>&copy; 2025 felixhub.dev. All rights reserved.</p>
     </footer>
 </body>
 </html>

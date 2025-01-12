@@ -49,7 +49,9 @@
     border-radius: 50%;
     border: 2px solid #ff7e5f;
     overflow: hidden;
+    object-fit: cover; /* Ensures the image fits nicely within the circle */
 }
+
 .cursor {
     color: white;
     animation: blink 1s step-end infinite; /* Slower blinking cursor */
@@ -73,38 +75,48 @@
     /* border: 2px solid rgba(0, 0, 0, 0.5); */ /* Removed the border */
 }
 
-  
-.placeholder-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+.text-based-link {
+    position: relative; /* For positioning the pseudo-element */
+    color: #ff7e5f; /* Default color */
+    font-weight: bold; /* Bold text for prominence */
+    text-decoration: none; /* Remove the default underline */
+    padding: 5px 10px; /* Padding around the text */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for transform and color */
+    display: inline-block; /* Make the element inline-block for the transform to work */
 }
+
+/* Hover effect for the text-based link */
+.text-based-link:hover {
+    color: #feb47b; /* Change color on hover */
+    transform: scale(1.1) translateY(-5px); /* Pop-out effect with slight vertical translation */
+    font-weight: bolder; /* Make the text bolder on hover */
+}
+
+/* Underline animation on hover */
+.text-based-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ff7e5f; /* Color of the underline */
+    transition: width 0.3s ease-in-out; /* Smooth transition for the underline width */
+    transform: translateX(-50%); /* Center the underline */
+}
+
+.text-based-link:hover::after {
+    width: 80%; /* Expand the underline on hover */
+}
+
+
 
 .fade-in {
     animation: fadeIn 1.5s forwards;
 }
 
-.typing-container {
-    font-size: 32px;
-    color: white;
-    text-align: center;
-    white-space: nowrap;
-}
 
-/* Style for the typed-text */
-.typed-text {
-    font-size: 100px; /* Adjust font size */
-    font-family: 'Courier New', Courier, monospace; /* Choose a monospaced font */
-    color: white; /* Text color */
-    display: inline; /* Ensure the text stays inline */
-    white-space: nowrap; /* Prevent line breaks */
-    position: relative; /* For possible positioning */
-    visibility: hidden;
-    opacity: 1;
-    font-weight: bold;
-    animation: fadeIn 2s forwards; /* Fade-in effect for the text */
-  }
-  
 
 
 /* FAQ box styling */

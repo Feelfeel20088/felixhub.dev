@@ -1,0 +1,111 @@
+/* note that code sytax is handled by highlightjs not me
+
+
+
+
+/* Overall Documentation Layout */
+.documentation-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    border-radius: 15px; /* Adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for a lifted effect */
+}
+
+
+/* Heading Styles */
+.documentation-container h1, .documentation-container h2, .documentation-container h3 {
+    color: #ff7e5f;
+    font-weight: bold;
+}
+
+/* Paragraph Styles for Documentation Text */
+.doc-text {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Box for Keeping Text in Boundaries (no borders) */
+.text-block {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 1.1em;
+    color: #444;
+}
+
+/* Callout Boxes (for important info, warnings, etc.) */
+.callout-box {
+    padding: 15px;
+    margin: 20px 0;
+    background-color: #ffeb3b;
+    color: #333;
+    border-left: 5px solid #ff7e5f;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Note Boxes (for additional info, tips, etc.) */
+.note-box {
+    padding: 15px;
+    margin: 20px 0;
+    background-color: #e3f2fd;
+    color: #333;
+    border-left: 5px solid #42a5f5;
+    font-weight: normal;
+    border-radius: 5px;
+}
+
+/* Documentation Links */
+.doc-link {
+    color: #ff7e5f;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.doc-link:hover {
+    border-bottom: 2px solid #ff7e5f;
+}
+
+/* List Styles for Documentation */
+.doc-list {
+    margin-left: 20px;
+}
+
+.doc-list li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+/* Blockquotes for Quotes */
+blockquote {
+    font-style: italic;
+    color: #555;
+    border-left: 5px solid #ff7e5f;
+    padding-left: 15px;
+    margin: 20px 0;
+}
+
+/* Horizontal Divider (to separate sections) */
+.hr-divider {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 30px 0;
+}
+
+/* Footer for Documentation */
+.footer-doc {
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    font-size: 1em;
+}

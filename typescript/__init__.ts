@@ -1,14 +1,41 @@
-import fs from 'fs';
+import chatRoutes from "./routes/routes";
+import fastify from 'fastify';
+import formbody from '@fastify/formbody';
+import fastifyStatic from '@fastify/static';
 import path from 'path';
+import cookie from '@fastify/cookie';
+import helmet from '@fastify/helmet';
+import favicon from 'fastify-favicon';
 
-// Path to the folder containing the files you want to import
-const folderPath = path.join(__dirname, './dynamic_endpoints');
 
-// Read all files in the folder
-const files = fs.readdirSync(folderPath);
-
-files.forEach(file => {
-    if (file.endsWith('.js')) {
-        require(path.join(folderPath, file));
-    }
+const server = fastify({
+    logger: true,
+    bodyLimit: 1048576000 // Global limit (1 MB)
 });
+
+server.register(fastifyStatic, {
+    root: path.resolve(__dirname)
+});
+
+server.register(formbody);
+
+server.register(helmet, {
+    contentSecurityPolicy: false // Disables the Content Security Policy
+});
+
+server.register(favicon, {
+    path: path.join(__dirname, 'static', 'images'),
+    name: 'favicon.ico',
+    maxAge: 3600
+});
+
+server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
+    if (err) {
+        server.log.error(err);
+        process.exit(1);
+    }
+    console.log(`Server is now listening on ${address}`);
+});
+
+chatRoutes(server);
+

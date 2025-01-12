@@ -1,51 +1,38 @@
-/* base.css */
+/* Ensure html takes full height */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* Body margin and padding setup */
 body {
-    font-family: 'Fira Code', monospace;
-    margin: 0;
-    padding: 0;
+    margin: 0 0 100px; /* Reserve space for the footer */
+    padding: 25px;
     background: linear-gradient(to right, #ff7e5f, #feb47b);
     color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
+    font-family: 'Fira Code', monospace;
     box-sizing: border-box;
 }
 
-/* Ensure links are styled consistently and have smooth hover transitions */
-a {
-    text-decoration: none;
-    color: #ff7e5f;
-    font-weight: bold;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 2px solid transparent;
+/* Footer positioned absolutely at the bottom */
+footer {
+    background-color: white;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Hover effect for links */
-a:hover {
-    color: #feb47b;
-    border-bottom: 2px solid #ff7e5f;
+footer p {
+    margin: 0;
+    font-size: 1rem;
 }
 
-/* Global responsiveness adjustments */
-@media (max-width: 768px) {
-    body {
-        font-size: 16px; /* Slightly reduce font size for smaller screens */
-        padding: 10px; /* Add padding for better spacing */
-    }
-
-    a {
-        font-size: 1.1em; /* Make links slightly bigger on mobile for ease of clicking */
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        font-size: 14px; /* Further reduce font size on very small screens */
-    }
-
-    a {
-        font-size: 1em; /* Links back to normal size */
-    }
-}
+/* Global styles for links */

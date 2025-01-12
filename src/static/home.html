@@ -9,9 +9,7 @@
     <!-- Link only the CSS files needed for this page -->
     <link rel="stylesheet" href="/static/css/base.css">
     <link rel="stylesheet" href="/static/css/header.css">
-    <link rel="stylesheet" href="/static/css/navigation.css">
     <link rel="stylesheet" href="/static/css/main.css">
-    <link rel="stylesheet" href="/static/css/footer.css">
     <link rel="stylesheet" href="/static/css/animations.css">
     <link rel="stylesheet" href="/static/css/scrollbar.css">
 </head>
@@ -21,29 +19,23 @@
             <img src="/static/images/favicon.ico" alt="Logo" class="logo">
             <div class="title">felixhub.dev</div>
             <nav>
-                <a href="/">Home</a>
                 <a href="/signup">Signup</a>
-                <a href="/AIpage">AI</a>
-                <a href="#faq">FAQ</a>
-                <a href="#contact">Contact</a>
-                <a href="/static/projects.html">Projects</a>
+                <a href="/AIpage">AI  <span class="badge">Beta</span></a>
+                <a href="#faq">FAQ</a> 
+                <a href="#contact">Contact</a> 
+                <a href="/static/projects.html">Projects <span class="badge">Beta</span></a>
+                <a href="/about">About </a>
             </nav>
         </div>
     </header>
+    
 
     <div class="main-content">
-        <div class="image-frame">
-            <div class="placeholder-image">
-                <a href="https://search.nixos.org/">
-                    <img src="/static/images/felix.jpg" alt="Felix">
-                </a>
-            </div>
-        </div>
 
         <div class="text-box">
             <h2>Hi I'm Felix</h2>
             <p>
-                I’m a 15-year-old sophomore programmer who codes for fun! 
+                I’m a 16-year-old sophomore programmer who codes for fun! 
                 I aspire to attend DePaul University in Illinois to obtain a Computer Science degree, followed by a master's degree. 
                 I develop applications for profit but am open to working on any freelance project. 
                 I am passionate about problem-solving and innovation and believe that technology can transform our world!
@@ -52,12 +44,12 @@
 
         <div class="text-box">
             <h2>Some Information</h2>
-            This site is hosted on my local NixOS k3s cluster at my residence. It employs Fastify for serving and ngrok as a reverse proxy (more about why I chose ngrok can be found in my blog). Additionally, several other applications operate on different ports. The primary objectives of this website are:
+            This site is hosted on my local NixOS k3s cluster at my residence. It employs Fastify for serving and ngrok as a reverse proxy. Additionally, several other applications operate on different ports. The primary objectives of this website are:
             <br> <strong>1.</strong> To showcase my projects and code to the public and potential interviewers.
             <br> <strong>2.</strong> To expose my services, allowing my applications to access my k3s cluster.
             <br>
             You may notice the api.felixhub.dev subdomain; this includes endpoints for various services running on my k3s cluster. If you attempt to utilize them without authorization, you will be redirected to the login page, as access requires a special key. 
-            If you wish to access these services, please <a href="#contact">contact me</a>.
+            If you wish to access these services, please <a class="text-based-link" href="#contact">contact me</a>.
         </div>
 
         <div class="faq" id="faq">
@@ -83,7 +75,7 @@
         </div>
     </div>
     <footer>
-        <p>&copy; 2024 felixhub.dev. All rights reserved.</p>
+        <p>&copy; 2025 felixhub.dev. All rights reserved.</p>
     </footer>
 </body>
 </html>

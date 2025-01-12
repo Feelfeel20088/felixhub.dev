@@ -1,57 +1,60 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="/static/css/base.css">
-        <link rel="stylesheet" href="/static/css/header.css">
-        <link rel="stylesheet" href="/static/css/navigation.css">
-        <link rel="stylesheet" href="/static/css/main.css">
-        <link rel="stylesheet" href="/static/css/input.css">
-        <link rel="stylesheet" href="/static/css/footer.css">
-        <link rel="stylesheet" href="/static/css/scrollbar.css">
-        <link rel="stylesheet" href="/static/css/animations.css">
-    </head>
-    <body>
-        <header>
-            <div class="header-content">
-                <img src="/static/images/favicon.ico" alt="Logo" class="logo"> <!-- Add your logo image here -->
-                <div class="title">felixhub.dev</div>
-                <nav>
-                    <a href="/">Home</a>
-                    <a href="/signup">Signup</a>
-                    <a href="/AIpage">AI</a>
-                    <a href="#faq">FAQ</a>
-                    <a href="#contact">Contact</a>
-                    <a href="/static/projects.html">Projects</a>
-                </nav>
-            </div>
-        </header>
-        <div class="main-content">
-            <div class="text-box">
-                <p id="output"></p>
-            </div>
-            <div class="input-box">
-                <div class="file-input-wrapper">
-                    <input type="file" id="fileInput" class="fileInput" accept="image/*" onchange="previewImage()" />
-                    <label for="fileInput" class="custom-file-label">Choose File</label>
-                </div>            
-                <input type="text" id="user-input" class="styled-input" placeholder="Message llama3"> 
-                <button type="button" class="styled-button" id="submit" onclick="sendMessage()">
-                    <span class="material-icons">arrow_forward</span>
-                </button>
-            </div>
-            <div class="preview-container">
-                <img id="imagePreview" class="image-preview" src="" alt="Image Preview" style="display: none;">
-            </div>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/input.css">
+    <link rel="stylesheet" href="/static/css/scrollbar.css">
+    <link rel="stylesheet" href="/static/css/animations.css">
+    
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="/static/images/favicon.ico" alt="Logo" class="logo">
+            <div class="title">felixhub.dev</div>
+            <nav>
+                <a href="/signup">Signup</a>
+                <a href="/AIpage">AI <span class="badge">Beta</span></a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+                <a href="/static/projects.html">Projects <span class="badge">Beta</span></a>
+                <a href="/about">About</a> <!-- Properly close the anchor tag -->
+            </nav>
             
         </div>
-        <script src="/scripts/AI.js"></script>
-        <footer>
-            <p>&copy; 2024 felixhub.dev. All rights reserved.</p>
-        </footer>
-    </body>
-    </html>
+    </header>
     
+    <div class="main-content">
+        <div class="text-box">
+            <p id="output"></p>
+        </div>
+        <div class="input-box">
+            <div class="file-input-wrapper">
+                <input type="file" id="fileInput" class="fileInput" accept="image/*" onchange="previewImage()">
+                <label for="fileInput" class="custom-file-label">Choose File</label>
+            </div>            
+            <input type="text" id="user-input" class="styled-input" placeholder="Message llama3"> 
+            <button type="button" class="styled-button" id="submit" onclick="sendMessage()">
+                <span class="material-icons">arrow_forward</span>
+            </button>
+        </div>
+        <div class="preview-container">
+            <img id="imagePreview" class="image-preview hidden" src="" alt="Image Preview" style="display: none;">
+            <button class="close-button hidden" id="closeButton" style="display: none;" onclick="clearImage()">×</button>
+        </div>
+        
+        
+        
+    </div>
+    <script src="/clientSide/AI_handle.js"></script>
+    <footer>
+        <p>© 2025 felixhub.dev. All rights reserved.</p>
+    </footer>
+
+
+</body></html>

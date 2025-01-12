@@ -1,3 +1,9 @@
+.hidden {
+    display: none;
+}
+
+
+
 /* input.css */
 .input-box {
     display: flex;
@@ -110,6 +116,11 @@
 .preview-container {
     margin-top: 20px;
     text-align: center;
+    display: flex;
+    justify-content: flex-end; /* Align children to the right horizontally */
+    align-items: flex-start; /* Align children to the top vertically */
+    height: 100%; /* Ensure the container takes up full height */
+    position: relative; /* Keeps the layout intact */
 }
 
 .image-preview {
@@ -120,6 +131,38 @@
     margin-top: 10px;
 }
 
+
+.close-button {
+    position: absolute; /* Absolute positioning to control placement */
+    top: 10px; /* Distance from the top */
+    right: 1%; /* 99% across, leaving a 1% margin on the right */
+    width: 35px; /* Smaller width */
+    height: 35px; /* Smaller height */
+    border-radius: 50%; /* Make it round */
+    background-color: #ff3b30; /* Red background color */
+    color: white; /* Text color */
+    font-size: 18px; /* Smaller icon size */
+    display: flex; /* Flexbox for centering the icon */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    z-index: 10; /* Ensure it's above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* Hover effect */
+.close-button:hover {
+    background-color: #ff1a14; /* Darker red on hover */
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+/* Focus effect */
+.close-button:focus {
+    outline: none; /* Remove the outline */
+    box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.5); /* Focus shadow */
+}
 /* Responsive Styles */
 @media (max-width: 768px) {
     .input-box {
@@ -154,3 +197,4 @@
         font-size: 14px; /* Smaller font size for mobile screens */
     }
 }
+
