@@ -100,17 +100,19 @@ If you prefer using Docker to run the project, you can pull the pre-built contai
 
 For those who want to deploy using Kubernetes, you can use the `deployments.yaml` file.
 
-1. Apply the Kubernetes configuration:
+1. navigate to the deployments directory and apply the Kubernetes configuration:
 
     ```bash
-    kubectl apply -f deployments.yaml
+    cd deployments
+    kubectl apply -f ./
     ```
 
     This will deploy the website to your Kubernetes cluster.
 
 2. view the website:
-    http://<ANY_NODE_IP>:30000/
-    
+
+    `http://<ANY_NODE_IP>:30000/`
+
 
     if you understand kuberneties you can modify the `deployment.yaml` file to your liking to even exspose the website to the internet
 

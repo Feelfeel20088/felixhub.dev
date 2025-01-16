@@ -1,0 +1,9 @@
+version: 3
+agent:
+  authtoken: 2lAQOAwN1T9EHW4abzxZhaOjqYF_4H6vjNGJs7tz3szN77Kbn
+tunnels:
+  felixhub.dev:  # Updated tunnel name to match the hostname
+    labels:
+      - edge=edghts_2lAmczCIFrRC7Xy4je7F44jMCNg
+    addr: http://felixhub-internal.default.svc.cluster.local:8080
+    # hostname: www.felixhub.dev on paid plan cannot use :(

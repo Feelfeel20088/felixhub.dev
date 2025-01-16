@@ -9,6 +9,6 @@
     "skipLibCheck": false, // Skips type checking of declaration files
     "forceConsistentCasingInFileNames": true // Enforces consistent casing
   },
-  "include": ["typescript/**/*"], // Include all files in the typescript directory
+  "include": ["typescript/**/*", "typescript/controllers"], // Include all files in the typescript directory
   "exclude": ["node_modules", "**/*.test.ts"] // Exclude node_modules and test files
 }
