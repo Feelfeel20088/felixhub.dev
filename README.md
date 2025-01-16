@@ -103,8 +103,10 @@ For those who want to deploy using Kubernetes, you can use the `deployments.yaml
 1. navigate to the deployments directory and apply the Kubernetes configuration:
 
     ```bash
-    cd deployments
-    kubectl apply -f ./
+    cd deployments 
+    ```
+    ```bash
+    kubectl apply -f ./ 
     ```
 
     This will deploy the website to your Kubernetes cluster.
