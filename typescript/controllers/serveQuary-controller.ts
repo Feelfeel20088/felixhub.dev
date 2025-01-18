@@ -1,14 +1,13 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import path from 'path';
+import path from 'path'
 import fs from 'fs/promises';
 import projects from '../utility/param-interface';
 import { fileExists } from '../utility/fileExists';
 
-export const serve_Quary = (folder: string) => {
+export const servequary = (folder: string) => {
     return async (request: FastifyRequest<{Params: projects}>, reply: FastifyReply) => {
         const Quaryname = request.params.projectName;
         
-        // Assuming the documentation files are stored in a "docs" folder
         const docPath: string = path.join(__dirname, '../static', folder, `${Quaryname.slice(1)}.html`)
 
         // Check if the file exists

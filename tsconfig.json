@@ -7,7 +7,8 @@
     "module": "commonjs", // Specify module code generation
     "esModuleInterop": true, // Enables interoperability between CommonJS and ES Modules
     "skipLibCheck": false, // Skips type checking of declaration files
-    "forceConsistentCasingInFileNames": true // Enforces consistent casing
+    "forceConsistentCasingInFileNames": true, // Enforces consistent casing
+    "types": ["node"]
   },
   "include": ["typescript/**/*", "typescript/controllers"], // Include all files in the typescript directory
   "exclude": ["node_modules", "**/*.test.ts"] // Exclude node_modules and test files
