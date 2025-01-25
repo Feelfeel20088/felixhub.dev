@@ -1,4 +1,3 @@
-import chatRoutes from "./routes/routes";
 import fastify from 'fastify';
 import formbody from '@fastify/formbody';
 import fastifyStatic from '@fastify/static';
@@ -6,6 +5,8 @@ import path from 'path';
 import cookie from '@fastify/cookie';
 import helmet from '@fastify/helmet';
 import favicon from 'fastify-favicon';
+import FelixHub from "./FelixHub";
+
 
 
 const server = fastify({
@@ -36,6 +37,18 @@ server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
     }
     console.log(`Server is now listening on ${address}`);
 });
+(async () => {
+    let felixhub = new FelixHub(server);
 
-chatRoutes(server);
+    await felixhub.initialize(); // Wait for async initialization
+    await felixhub.route("GET", "/", { fileName: "index.html" }, "servePage");
+    await felixhub.route("GET", "/about", { fileName: "home.html" }, "servePage");
+    await felixhub.route("GET", "/AIpage", { fileName: "AI.html" }, "servePage");
+    await felixhub.route("GET", "/signup", { fileName: "signup.html" }, "servePage");
+    await felixhub.route("GET", "/projects", { fileName: "projects.html" }, "servePage");
+    await felixhub.route("GET", "/projects:projectName", { folder: "../static/documentation/KahootBot" }, "serveQuary");
+    await felixhub.route("POST", "/chat", null, "AI-service");
 
+    
+
+})();
