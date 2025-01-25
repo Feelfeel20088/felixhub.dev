@@ -38,14 +38,14 @@
                 <input type="file" id="fileInput" class="fileInput" accept="image/*" onchange="previewImage()">
                 <label for="fileInput" class="custom-file-label">Choose File</label>
             </div>            
-            <input type="text" id="user-input" class="styled-input" placeholder="Message llama3"> 
+            <input type="text" id="user-input" class="styled-input" placeholder="Choose a model"> 
 
             <div class="dropdown-container">
                 <button class="dropdown-button">Select model</button>
                 <div class="dropdown-menu hidden">
                     <!-- TODO instead of defining these models have a route to find out what models are avvailble -->
                     <div class="dropdown-option" data-ai="llava">llava</div>
-                    <div class="dropdown-option" data-ai="llama3">llama3</div>
+                    <!-- <div class="dropdown-option" data-ai="llama3.3">llama3.3</div>      to much memory need more ram before loading this one -->
                     <!-- <div class="dropdown-option" data-ai="">Chat Falcon</div> -->
                 </div>
             </div>
