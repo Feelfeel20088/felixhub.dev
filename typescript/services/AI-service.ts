@@ -4,20 +4,18 @@ import URL from '../utility/config/URL';
 
 export default class FelixHubChatService extends FelixHubServiceBase {
     // Define the callback method for the service
-    public async callBack(req: FastifyRequest<{ Body: { content: string; images: string[] } }>, reply: FastifyReply): Promise<void> {
-        // Log the user's request
-        console.log('User request:', req.body);
-        console.log('Fetching from Ollama API...');
-
+    public async callBack(req: FastifyRequest<{ Body: { model: string; content: string; images: string[];} }>, reply: FastifyReply): Promise<void> {
+        const { model } = req.body
+        delete (req as any).body.model; // just to make sure i dont have to set model as optianl
         try {
             // Make a POST request to the Ollama API
-            const response = await fetch(URL.ollama_external, {
+            const response = await fetch(URL.ollama_internal, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    model: 'llava',
+                    model: model,
                     messages: [
                         {
                             role: 'user',

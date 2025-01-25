@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+let selectedAI;
 function getImageBase64(file) {
     return new Promise((resolve, reject) => {
         const fileReader = new FileReader();
@@ -47,6 +48,7 @@ function sendMessage() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                model: selectedAI,
                 content: userinputvar,
                 images: imageBase64
             })
@@ -104,3 +106,30 @@ function clearImage() {
     imagePreview.src = ""; // Clear the image source
     fileInput.value = ""; // Clear the file input
 }
+const dropdownButton = document.querySelector('.dropdown-button');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+const inputField = document.getElementById('user-input');
+// Show/hide the dropdown menu
+dropdownButton.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('hidden');
+});
+// Handle option selection
+const dropdownOptions = document.querySelectorAll('.dropdown-option');
+dropdownOptions.forEach(option => {
+    option.addEventListener('click', (event) => {
+        const target = event.target;
+        selectedAI = target.getAttribute('data-ai');
+        if (selectedAI && inputField) {
+            inputField.placeholder = `Message ${selectedAI}`;
+        }
+        dropdownMenu.classList.add('hidden'); // Hide the menu after selection
+        console.log(`Selected AI: ${selectedAI}`); // Optional: For debugging
+    });
+});
+// Close the dropdown menu when clicking outside
+document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!dropdownButton.contains(target) && !dropdownMenu.contains(target)) {
+        dropdownMenu.classList.add('hidden');
+    }
+});

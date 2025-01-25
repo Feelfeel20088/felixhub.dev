@@ -28,13 +28,10 @@ class FelixHubServeQueryService extends FelixHubServiceBase_1.default {
             const queryName = req.params.projectName;
             // Construct the document path
             const docPath = path_1.default.join(__dirname, '../static', folder, `${queryName.slice(1)}.html`);
-            console.log(`Reading file from: ${docPath}`);
             try {
                 // Check if the file exists using the utils method
                 if (yield this.utils.fileExists(docPath)) {
                     const data = yield promises_1.default.readFile(docPath, 'utf-8');
-                    console.log(data);
-                    console.log('Sending HTML content:', data);
                     reply.type('text/html').send(data);
                 }
                 else {

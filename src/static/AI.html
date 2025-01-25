@@ -39,19 +39,34 @@
                 <label for="fileInput" class="custom-file-label">Choose File</label>
             </div>            
             <input type="text" id="user-input" class="styled-input" placeholder="Message llama3"> 
+
+            <div class="dropdown-container">
+                <button class="dropdown-button">Select model</button>
+                <div class="dropdown-menu hidden">
+                    <!-- TODO instead of defining these models have a route to find out what models are avvailble -->
+                    <div class="dropdown-option" data-ai="llava">llava</div>
+                    <div class="dropdown-option" data-ai="llama3">llama3</div>
+                    <!-- <div class="dropdown-option" data-ai="">Chat Falcon</div> -->
+                </div>
+            </div>
+        
             <button type="button" class="styled-button" id="submit" onclick="sendMessage()">
                 <span class="material-icons">arrow_forward</span>
             </button>
-        </div>
-        <div class="preview-container">
-            <img id="imagePreview" class="image-preview hidden" src="" alt="Image Preview" style="display: none;">
-            <button class="close-button hidden" id="closeButton" style="display: none;" onclick="clearImage()">×</button>
-        </div>
-        
-        
-        
+    
+            <!-- Dropdown Menu for AI Selection -->
     </div>
+    <div class="preview-container">
+        <img id="imagePreview" class="image-preview hidden" src="" alt="Image Preview" style="display: none;">
+        <button class="close-button hidden" id="closeButton" style="display: none;" onclick="clearImage()">×</button>
+    </div>
+    
     <script src="/clientSide/AI_handle.js"></script>
+    <!-- <script type="module" src="/clientSide/fileUtils.js"></script>
+    <script type="module" src="/clientSide/dropdownUtils.js"></script>
+    <script type="module" src="/clientSide/chatHandler.js"></script>
+    <script type="module" src="/clientSide/main.js"></script> -->
+    
     <footer>
         <p>© 2025 felixhub.dev. All rights reserved.</p>
     </footer>
