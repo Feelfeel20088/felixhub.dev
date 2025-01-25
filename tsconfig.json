@@ -10,6 +10,6 @@
     "forceConsistentCasingInFileNames": true, // Enforces consistent casing
     "types": ["node"]
   },
-  "include": ["typescript/**/*", "typescript/controllers"], // Include all files in the typescript directory
+  "include": ["typescript/**/*", "typescript/controllers", "typescript/routes"], // Include all files in the typescript directory
   "exclude": ["node_modules", "**/*.test.ts"] // Exclude node_modules and test files
 }

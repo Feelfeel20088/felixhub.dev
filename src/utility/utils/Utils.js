@@ -12,19 +12,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.servePage = void 0;
 const promises_1 = __importDefault(require("fs/promises"));
-const path_1 = __importDefault(require("path"));
-// Controller function to serve an HTML page
-const servePage = (fileName) => {
-    return (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
-        try {
-            const data = yield promises_1.default.readFile(path_1.default.join(__dirname, '../static', fileName), 'utf-8');
-            reply.type('text/html').send(data);
+class Utils {
+    constructor() { }
+    ;
+    static getInstance() {
+        if (!Utils.instance) {
+            Utils.instance = new Utils();
         }
-        catch (err) {
-            reply.status(500).send('Error reading the HTML file');
-        }
-    });
-};
-exports.servePage = servePage;
+        return Utils.instance;
+    }
+    fileExists(filePath) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield promises_1.default.access(filePath);
+                return true;
+            }
+            catch (error) {
+                return false;
+            }
+        });
+    }
+}
+exports.default = Utils;
