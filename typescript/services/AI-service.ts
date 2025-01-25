@@ -9,7 +9,7 @@ export default class FelixHubChatService extends FelixHubServiceBase {
         delete (req as any).body.model; // just to make sure i dont have to set model as optianl
         try {
             // Make a POST request to the Ollama API
-            const response = await fetch(URL.ollama_internal, {
+            const response = await fetch(URL.ollama_external, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,6 +27,7 @@ export default class FelixHubChatService extends FelixHubServiceBase {
 
             // Handle errors in the API response
             if (!response.ok) {
+                console.warn(`something went wrong with ollama :( ${await response.text()}`)
                 reply.status(500).send({ error: 'Error getting AI response' });
                 return;
             }
