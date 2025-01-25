@@ -19,18 +19,17 @@ class FelixHubChatService extends FelixHubServiceBase_1.default {
     callBack(req, reply) {
         return __awaiter(this, void 0, void 0, function* () {
             var _a;
-            // Log the user's request
-            console.log('User request:', req.body);
-            console.log('Fetching from Ollama API...');
+            const { model } = req.body;
+            delete req.body.model; // just to make sure i dont have to set model as optianl
             try {
                 // Make a POST request to the Ollama API
-                const response = yield fetch(URL_1.default.ollama_external, {
+                const response = yield fetch(URL_1.default.ollama_internal, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        model: 'llava',
+                        model: model,
                         messages: [
                             Object.assign({ role: 'user' }, req.body),
                         ],

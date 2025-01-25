@@ -1,3 +1,9 @@
+
+
+
+
+let selectedAI: string;
+
 function getImageBase64(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
         const fileReader = new FileReader();
@@ -10,7 +16,10 @@ function getImageBase64(file: File): Promise<string> {
 }
 
 
+
+
 async function sendMessage(): Promise<void> {
+    
     console.log("send message called");
     const userinput = document.getElementById("user-input") as HTMLInputElement
     const output = document.getElementById('output') as HTMLParagraphElement
@@ -41,6 +50,7 @@ async function sendMessage(): Promise<void> {
         },
         body: JSON.stringify(
             { 
+              model: selectedAI,
               content: userinputvar,
               images: imageBase64
             }   
@@ -108,3 +118,35 @@ function clearImage(): void {
     imagePreview.src = "";  // Clear the image source
     fileInput.value = "";  // Clear the file input
 }
+
+const dropdownButton = document.querySelector('.dropdown-button') as HTMLButtonElement;
+const dropdownMenu = document.querySelector('.dropdown-menu') as HTMLDivElement;
+const inputField = document.getElementById('user-input') as HTMLInputElement;
+
+// Show/hide the dropdown menu
+dropdownButton.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('hidden');
+});
+
+// Handle option selection
+const dropdownOptions = document.querySelectorAll('.dropdown-option') as NodeListOf<HTMLDivElement>;
+dropdownOptions.forEach(option => {
+    option.addEventListener('click', (event: MouseEvent) => {
+        const target = event.target as HTMLDivElement;
+        selectedAI = target.getAttribute('data-ai') as string;
+        if (selectedAI && inputField) {
+            inputField.placeholder = `Message ${selectedAI}`;
+        }
+        dropdownMenu.classList.add('hidden'); // Hide the menu after selection
+        console.log(`Selected AI: ${selectedAI}`); // Optional: For debugging
+    });
+});
+
+// Close the dropdown menu when clicking outside
+document.addEventListener('click', (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (!dropdownButton.contains(target) && !dropdownMenu.contains(target)) {
+        dropdownMenu.classList.add('hidden');
+    }
+
+});
