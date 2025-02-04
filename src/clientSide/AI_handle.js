@@ -57,7 +57,7 @@ function sendMessage() {
         if (!response.ok) {
             submit.disabled = false;
             output.innerHTML = "";
-            throw new Error("failed to get AI response. reason: " + response.statusText);
+            throw new Error(yield response.text());
         }
         output.innerHTML = ""; // clear the current text. will be changed after i make context a thing
         const reader = (_b = response.body) === null || _b === void 0 ? void 0 : _b.getReader();
@@ -131,5 +131,11 @@ document.addEventListener('click', (event) => {
     const target = event.target;
     if (!dropdownButton.contains(target) && !dropdownMenu.contains(target)) {
         dropdownMenu.classList.add('hidden');
+    }
+});
+document.addEventListener('keydown', function (event) {
+    // Check if the key pressed is Enter (keyCode 13 or 'Enter' in modern browsers)
+    if (event.key === 'Enter') {
+        sendMessage();
     }
 });

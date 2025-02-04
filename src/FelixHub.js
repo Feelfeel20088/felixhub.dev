@@ -24,14 +24,7 @@ class FelixHub {
             yield this.controllers.initialize();
         });
     }
-    /**
-     * Define a route dynamically and link it to a service.
-     * @param method - HTTP method for the route (GET, POST, etc.)
-     * @param url - URL path for the route
-     * @param params - Parameters to pass to the service
-     * @param service - The name of the service to link the route to
-     */
-    route(method, url, params, service) {
+    getService(params, service) {
         return __awaiter(this, void 0, void 0, function* () {
             // Set parameters for the specified service
             let serviceClass = this.controllers.getServiceClass(service);
@@ -45,12 +38,34 @@ class FelixHub {
             if (!callBack) {
                 throw new Error(`Service instance ${service} not found or does not provide a valid callback.`);
             }
+            return callBack;
+        });
+    }
+    /**
+     * Define a route dynamically and link it to a service.
+     * @param method - HTTP method for the route (GET, POST, etc.)
+     * @param url - URL path for the route
+     * @param params - Parameters to pass to the service
+     * @param service - The name of the service to link the route to
+     */
+    route(method, url, params, service) {
+        return __awaiter(this, void 0, void 0, function* () {
             // Register the route with Fastify
+            const callBack = yield this.getService(params, service);
             this.server.route({
                 method,
                 url,
                 handler: callBack,
             });
+        });
+    }
+    // ------------------------
+    //        wrappers 
+    // ------------------------
+    setNotFoundHandler(params, service) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const callBack = yield this.getService(params, service);
+            this.server.setNotFoundHandler(callBack);
         });
     }
 }

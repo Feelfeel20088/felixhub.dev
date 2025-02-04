@@ -13,7 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FelixHubServiceBase_1 = __importDefault(require("../utility/FelixHubServiceBase"));
-const URL_1 = __importDefault(require("../utility/config/URL"));
+const URLS_1 = __importDefault(require("../utility/config/URLS"));
+const SYSTEM_1 = __importDefault(require("../utility/config/SYSTEM"));
 class FelixHubChatService extends FelixHubServiceBase_1.default {
     // Define the callback method for the service
     callBack(req, reply) {
@@ -23,7 +24,7 @@ class FelixHubChatService extends FelixHubServiceBase_1.default {
             delete req.body.model; // just to make sure i dont have to set model as optianl
             try {
                 // Make a POST request to the Ollama API
-                const response = yield fetch(URL_1.default.ollama_external, {
+                const response = yield fetch(URLS_1.default.ollama_local, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -31,14 +32,20 @@ class FelixHubChatService extends FelixHubServiceBase_1.default {
                     body: JSON.stringify({
                         model: model,
                         messages: [
+                            {
+                                role: 'system',
+                                model: req.body.model,
+                                content: SYSTEM_1.default.UNCENCORD_small
+                            },
                             Object.assign({ role: 'user' }, req.body),
                         ],
                     }),
                 });
                 // Handle errors in the API response
                 if (!response.ok) {
-                    console.warn(`something went wrong with ollama :( ${yield response.text()}`);
-                    reply.status(500).send({ error: 'Error getting AI response' });
+                    let reason = yield response.text();
+                    console.warn(`something went wrong with ollama :( ${reason}`);
+                    reply.status(500).send({ error: `Error getting AI response. ===== ${reason} ===== ` });
                     return;
                 }
                 const reader = (_a = response.body) === null || _a === void 0 ? void 0 : _a.getReader();

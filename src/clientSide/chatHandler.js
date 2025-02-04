@@ -41,7 +41,7 @@ function sendMessage(selectedAI, userInput, output, submit, fileInput) {
                 })
             });
             if (!response.ok) {
-                throw new Error("Failed to get AI response. Reason: " + response.statusText);
+                throw new Error(yield response.text());
             }
             output.innerHTML = "";
             const reader = (_b = response.body) === null || _b === void 0 ? void 0 : _b.getReader();

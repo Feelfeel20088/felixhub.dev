@@ -17,19 +17,7 @@ export default class FelixHub {
         await this.controllers.initialize();
     }
 
-    /**
-     * Define a route dynamically and link it to a service.
-     * @param method - HTTP method for the route (GET, POST, etc.)
-     * @param url - URL path for the route
-     * @param params - Parameters to pass to the service
-     * @param service - The name of the service to link the route to
-     */
-    async route(
-        method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
-        url: string,
-        params: any,
-        service: string
-    ): Promise<void> {
+    private async getService(params: any, service: string) {
         // Set parameters for the specified service
         let serviceClass = this.controllers.getServiceClass(service);
         if (!serviceClass) {
@@ -45,11 +33,44 @@ export default class FelixHub {
             throw new Error(`Service instance ${service} not found or does not provide a valid callback.`);
         }
 
+        return callBack;
+
+    }
+
+    /**
+     * Define a route dynamically and link it to a service.
+     * @param method - HTTP method for the route (GET, POST, etc.)
+     * @param url - URL path for the route
+     * @param params - Parameters to pass to the service
+     * @param service - The name of the service to link the route to
+     */
+    async route(
+        method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
+        url: string,
+        params: any,
+        service: string
+    ): Promise<void> {
         // Register the route with Fastify
+        const callBack = await this.getService(params, service); 
+
         this.server.route({
             method,
             url,
             handler: callBack,
         } as RouteOptions);
     }
+
+
+    // ------------------------
+    //        wrappers 
+    // ------------------------
+    async setNotFoundHandler(params: any, service: string) {
+        const callBack = await this.getService(params, service); 
+        this.server.setNotFoundHandler(callBack);
+    }
+
+    // async setErrorHandler(params: any, service: string) {
+    //     const callBack = await this.getService(params, service);
+    //     this.server.setErrorHandler(callBack);
+    // }
 }
