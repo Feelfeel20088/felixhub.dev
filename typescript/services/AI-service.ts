@@ -1,6 +1,11 @@
 import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify';
 import FelixHubServiceBase from '../utility/FelixHubServiceBase';
-import URL from '../utility/config/URL';
+import URL from '../utility/config/URLS';
+import SYSTEM from '../utility/config/SYSTEM';
+
+
+
+
 
 export default class FelixHubChatService extends FelixHubServiceBase {
     // Define the callback method for the service
@@ -9,7 +14,7 @@ export default class FelixHubChatService extends FelixHubServiceBase {
         delete (req as any).body.model; // just to make sure i dont have to set model as optianl
         try {
             // Make a POST request to the Ollama API
-            const response = await fetch(URL.ollama_external, {
+            const response = await fetch(URL.ollama_local, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -17,6 +22,11 @@ export default class FelixHubChatService extends FelixHubServiceBase {
                 body: JSON.stringify({
                     model: model,
                     messages: [
+                        {
+                            role: 'system',
+                            model: req.body.model,
+                            content: SYSTEM.UNCENCORD_small
+                        },
                         {
                             role: 'user',
                             ...req.body,
@@ -27,8 +37,9 @@ export default class FelixHubChatService extends FelixHubServiceBase {
 
             // Handle errors in the API response
             if (!response.ok) {
-                console.warn(`something went wrong with ollama :( ${await response.text()}`)
-                reply.status(500).send({ error: 'Error getting AI response' });
+                let reason = await response.text()
+                console.warn(`something went wrong with ollama :( ${reason}`)
+                reply.status(500).send({ error: `Error getting AI response. ===== ${reason} ===== `});
                 return;
             }
 

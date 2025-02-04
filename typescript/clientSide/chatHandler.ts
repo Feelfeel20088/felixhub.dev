@@ -39,7 +39,7 @@ export async function sendMessage(
         });
 
         if (!response.ok) {
-            throw new Error("Failed to get AI response. Reason: " + response.statusText);
+            throw new Error(await response.text());
         }
 
         output.innerHTML = "";

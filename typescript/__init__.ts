@@ -48,7 +48,7 @@ server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
     await felixhub.route("GET", "/projects", { fileName: "projects.html" }, "servePage");
     await felixhub.route("GET", "/projects:projectName", { folder: "../static/documentation/KahootBot" }, "serveQuary");
     await felixhub.route("POST", "/chat", null, "AI-service");
-
+    await felixhub.setNotFoundHandler({ fileName: "404notfound.html" }, "servePage");
     
 
 })();
