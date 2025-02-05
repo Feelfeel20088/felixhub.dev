@@ -24,18 +24,20 @@ exports.default = new class FelixhubDataBase {
             connectionLimit: 10, // Max number of connections
             queueLimit: 0
         });
-        this.startDataBase(); // will do nothing if tables allredy set 
+        this.startDataBase(); // will do nothing if tables already set 
     }
     startDataBase() {
         return __awaiter(this, void 0, void 0, function* () {
-            const createUsersTable = `CREATE TABLE IF NOT EXISTS users (
+            // Create Users Table
+            const createUsersTable = `CREATE TABLE users (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            username VARCHAR(255) NOT NULL,
+            email VARCHAR(50) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL,
-            email VARCHAR(255) NOT NULL UNIQUE,
+            admin BOOLEAN NOT NULL DEFAULT 0,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        );`;
+        )`;
             yield this.pool.promise().query(createUsersTable);
+            // Create Context Table
             const createContextTable = `CREATE TABLE IF NOT EXISTS context (
             id INT AUTO_INCREMENT PRIMARY KEY,             
             user_id INT NOT NULL,                           
@@ -49,19 +51,23 @@ exports.default = new class FelixhubDataBase {
         });
     }
     // -----------------
-    //       users
+    //       Users
     // -----------------
     createUser(username, password, email) {
         return __awaiter(this, void 0, void 0, function* () {
             const query = `
-            INSERT INTO context (username, password, email)
-            values (?, ?, ?);
+            INSERT INTO users (username, password, email)
+            VALUES (?, ?, ?);
         `;
             yield this.pool.promise().query(query, [username, password, email]);
         });
     }
+    getUserMail(username) {
+        return __awaiter(this, void 0, void 0, function* () {
+        });
+    }
     // -----------------
-    //      context
+    //      Context
     // -----------------
     createContext(userId, modelName, contextName, contextData) {
         return __awaiter(this, void 0, void 0, function* () {

@@ -24,7 +24,7 @@ class FelixHubChatService extends FelixHubServiceBase_1.default {
             delete req.body.model; // just to make sure i dont have to set model as optianl
             try {
                 // Make a POST request to the Ollama API
-                const response = yield fetch(URLS_1.default.ollama_local, {
+                const response = yield fetch(URLS_1.default.ollama_external, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
