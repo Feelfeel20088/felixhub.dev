@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>felixhub.dev | live kahootbot demo</title>
+</head>
+<body>
+    <h1>Start A Swarm</h1>
+    <form action="/kahootswarm" method="POST" target="hidden_iframe">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required><br><br>
+
+        <label for="gamepin">Game Pin:</label>
+        <input type="text" id="gamepin" name="gamepin" required><br><br>
+
+        <label for="nickname">Nickname:</label>
+        <input type="text" id="nickname" name="nickname" required><br><br>
+
+        <label for="crash">Crash:</label>
+        <input type="checkbox" id="crash" name="crash"><br><br>
+
+        <label for="ttl">TTL (Time to Live):</label>
+        <input type="number" id="ttl" name="ttl" value="10"><br><br>
+
+        <button type="submit">Start Swarm</button>
+    </form>
+
+    <!-- Hidden iframe to submit form without redirecting tempory--> 
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+</body>
+</html>

@@ -24,7 +24,7 @@ class FelixHubChatService extends FelixHubServiceBase_1.default {
             delete req.body.model; // just to make sure i dont have to set model as optianl
             try {
                 // Make a POST request to the Ollama API
-                const response = yield fetch(URLS_1.default.ollama_external, {
+                const response = yield fetch(URLS_1.default.ollama_internal, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ class FelixHubChatService extends FelixHubServiceBase_1.default {
             catch (error) {
                 // Handle internal server errors
                 console.error(`Fetch error: ${error}`);
-                reply.status(500).send({ error: 'Internal server error' });
+                reply.status(500).send({ error: error });
             }
         });
     }
