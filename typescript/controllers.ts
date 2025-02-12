@@ -49,6 +49,7 @@ class Controllers {
     for (const file of files) {
       const filePath = path.join(servicesDirectory, file);
       // Ignore non-JS/TS files
+      console.log(file);
       if (!file.endsWith('.js')) {
         console.warn(`Skipping non-JS file: ${file}`);
         continue;
