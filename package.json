@@ -1,5 +1,5 @@
 {
-  "name": "webserver",
+  "name": "felixhub.dev",
   "version": "1.0.2",
   "description": "a nice webserver to house my projects and api",
   "main": "__init__.js",
@@ -32,10 +32,12 @@
     "fs": "latest",
     "highlight.js": "^11.11.1",
     "mysql2": "^3.12.0",
-    "path": "latest"
+    "path": "latest",
+    "ws": "^8.18.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
+    "@types/ws": "^8.5.14",
     "typescript": "^5.7.2"
   }
 }

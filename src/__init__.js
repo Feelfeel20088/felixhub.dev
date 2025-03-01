@@ -35,7 +35,7 @@ server.register(fastify_favicon_1.default, {
     name: 'favicon.ico',
     maxAge: 3600
 });
-server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
+server.listen({ host: '0.0.0.0', port: 3000 }, (err, address) => {
     if (err) {
         server.log.error(err);
         process.exit(1);
@@ -50,8 +50,27 @@ server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
     yield felixhub.route("GET", "/AIpage", { fileName: "AI.html" }, "servePage");
     yield felixhub.route("GET", "/signup", { fileName: "signup.html" }, "servePage");
     yield felixhub.route("GET", "/projects", { fileName: "projects.html" }, "servePage");
+    yield felixhub.route("GET", "/admin", { fileName: "admin.html" }, "servePage");
     yield felixhub.route("GET", "/projects:projectName", { folder: "../static/documentation/KahootBot" }, "serveQuary");
     yield felixhub.route("POST", "/chat", null, "AI-service");
     yield felixhub.route("POST", "/kahootswarm", null, "kahootBot-service");
     yield felixhub.setNotFoundHandler({ fileName: "404notfound.html" }, "servePage");
 }))();
+const ws_1 = require("ws");
+const wss = new ws_1.WebSocketServer({ port: 9111 });
+console.log("shit is happning");
+wss.on("connection", (ws) => {
+    console.log("Client connected");
+    ws.on("message", (message) => {
+        console.log("Received:", message.toString());
+        console.log("sendig message back");
+        ws.send("gay"); // Send the same message back
+    });
+    ws.on("close", () => {
+        console.log("Client disconnected");
+    });
+    ws.on("error", (error) => {
+        console.error("WebSocket error:", error);
+    });
+});
+console.log("WebSocket server running on ws://localhost:8080");

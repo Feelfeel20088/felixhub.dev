@@ -46,6 +46,7 @@ server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
     await felixhub.route("GET", "/AIpage", { fileName: "AI.html" }, "servePage");
     await felixhub.route("GET", "/signup", { fileName: "signup.html" }, "servePage");
     await felixhub.route("GET", "/projects", { fileName: "projects.html" }, "servePage");
+    await felixhub.route("GET", "/admin", { fileName: "admin.html" }, "servePage");
     await felixhub.route("GET", "/projects:projectName", { folder: "../static/documentation/KahootBot" }, "serveQuary");
     await felixhub.route("POST", "/chat", null, "AI-service");
     await felixhub.route("POST", "/kahootswarm", null, "kahootBot-service")
@@ -54,3 +55,27 @@ server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
     
 
 })();
+
+import { WebSocketServer, WebSocket } from "ws";
+
+const wss = new WebSocketServer({ port: 9111 });
+console.log("shit is happning")
+wss.on("connection", (ws: WebSocket) => {
+    console.log("Client connected");
+
+    ws.on("message", (message: string) => {
+        console.log("Received:", message.toString());
+        console.log("sendig message back");
+        ws.send("gay"); // Send the same message back
+    });
+
+    ws.on("close", () => {
+        console.log("Client disconnected");
+    });
+
+    ws.on("error", (error) => {
+        console.error("WebSocket error:", error);
+    });
+});
+
+console.log("WebSocket server running on ws://localhost:8080");

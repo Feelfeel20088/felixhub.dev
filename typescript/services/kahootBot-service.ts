@@ -1,12 +1,10 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import fs from 'fs/promises';
-import path from 'path';
 import FelixHubServiceBase from '../utility/FelixHubServiceBase';
 import URL from '../utility/config/URLS';
 
-export default class kahootBotStartSwarm extends FelixHubServiceBase {
+export default class KahootBotStartSwarm extends FelixHubServiceBase {
     
-    // ttl default if not provided is 10
+    // Default TTL if not provided is 10
     async callBack(req: FastifyRequest<{
         Body: { 
             amount: number, 
@@ -17,35 +15,38 @@ export default class kahootBotStartSwarm extends FelixHubServiceBase {
         }
     }>, reply: FastifyReply): Promise<void> {
         
-        // Handle crash field (converting from 'on' or boolean to true/false)
-        req.body.crash = req.body.crash === 'on' || req.body.crash === true;
-        console.log(req.body.ttl);
-        // Perform the external API request
+        // Handle crash field conversion
+        const crash = req.body.crash === 'on' || req.body.crash === true;
+        const { amount, gamepin, nickname, ttl } = req.body;
+
+        // Validate amount and ttl
+        if (amount > 200 || ttl > 300) {
+            return reply.status(400).send({ error: "amount can't be greater than 200 and ttl cannot be greater than 300 (5m)" });
+        }
+
         try {
-            const response = await fetch(URL.kahootbot_local, {
+            const response = await fetch(URL.kahootbot_internal, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    ...req.body
+                    amount,
+                    gamepin,
+                    nickname,
+                    crash,
+                    ttl
                 }),
             });
 
-            // Check if the response is successful
             if (!response.ok) {
-                // Log the error and return an appropriate error response
                 const errorDetails = await response.text();
-                console.error(`Error: ${response.status} - ${errorDetails}`);
-                reply.status(response.status).send({ error: `Failed to start swarm: ${errorDetails}` });
-                return;
+                return reply.status(response.status).send({ error: `Failed to start swarm: ${errorDetails}` });
             }
 
-            // If successful, send a success response
             const responseData = await response.json();
             reply.send({ success: true, data: responseData });
         } catch (error) {
-            // Catch network or other errors
             console.error('Error during external request:', error);
             reply.status(500).send({ error: 'Internal Server Error' });
         }
