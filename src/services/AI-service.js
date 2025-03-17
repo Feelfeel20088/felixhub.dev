@@ -8,6 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -15,13 +26,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const FelixHubServiceBase_1 = __importDefault(require("../utility/FelixHubServiceBase"));
 const URLS_1 = __importDefault(require("../utility/config/URLS"));
 const SYSTEM_1 = __importDefault(require("../utility/config/SYSTEM"));
+const controller = new AbortController();
 class FelixHubChatService extends FelixHubServiceBase_1.default {
     // Define the callback method for the service
     callBack(req, reply) {
         return __awaiter(this, void 0, void 0, function* () {
             var _a;
-            const { model } = req.body;
-            delete req.body.model; // just to make sure i dont have to set model as optianl
+            const _b = req.body, { model } = _b, rest = __rest(_b, ["model"]);
             try {
                 // Make a POST request to the Ollama API
                 const response = yield fetch(URLS_1.default.ollama_internal, {
@@ -37,9 +48,10 @@ class FelixHubChatService extends FelixHubServiceBase_1.default {
                                 model: req.body.model,
                                 content: SYSTEM_1.default.UNCENCORD_small
                             },
-                            Object.assign({ role: 'user' }, req.body),
+                            Object.assign({ role: 'user' }, rest),
                         ],
                     }),
+                    signal: controller.signal
                 });
                 // Handle errors in the API response
                 if (!response.ok) {
@@ -58,7 +70,7 @@ class FelixHubChatService extends FelixHubServiceBase_1.default {
                 // Stream the data from the response to the client
                 while (true) {
                     const { done, value } = yield reader.read();
-                    const bufferedData = decoder.decode(value, { stream: true });
+                    // const bufferedData = decoder.decode(value, { stream: true });
                     if (done) {
                         console.log('Done reading response');
                         reply.raw.end();

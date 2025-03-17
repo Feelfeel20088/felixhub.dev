@@ -50,7 +50,8 @@ server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
     yield felixhub.route("GET", "/AIpage", { fileName: "AI.html" }, "servePage");
     yield felixhub.route("GET", "/signup", { fileName: "signup.html" }, "servePage");
     yield felixhub.route("GET", "/projects", { fileName: "projects.html" }, "servePage");
-    yield felixhub.route("GET", "/projects:projectName", { folder: "../static/documentation/KahootBot" }, "serveQuary");
+    yield felixhub.route("GET", "/admin", { fileName: "admin.html" }, "servePage");
+    yield felixhub.route("GET", "/Just_Another_Kahootbot:projectName", { folder: "../static/documentation/Just_Another_Kahootbot" }, "serveQuary");
     yield felixhub.route("POST", "/chat", null, "AI-service");
     yield felixhub.route("POST", "/kahootswarm", null, "kahootBot-service");
     yield felixhub.setNotFoundHandler({ fileName: "404notfound.html" }, "servePage");

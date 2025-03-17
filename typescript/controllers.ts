@@ -3,7 +3,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import FelixHubServiceBase from './utility/FelixHubServiceBase';
 import Utils from './utility/utils/Utils';
-import { error } from 'console';
 
 class Controllers {
   private static instance: Controllers; // Singleton instance

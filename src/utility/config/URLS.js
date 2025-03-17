@@ -6,6 +6,7 @@ exports.default = new class URLS {
         this.ollama_internal = 'http://ollama-internal.utility.svc.cluster.local:11434/api/chat';
         this.ollama_external = 'http://192.168.70.20:30000/api/chat';
         this.ollama_local = 'http://localhost:11434/api/chat';
+        // henrys mac mini 
         // kahootbot
         // swarm endpoint: creates a swarm
         this.kahootbot_internal = 'http://just-another-kahoot-bot-internal.utility.svc.cluster.local:8000/swarm';

@@ -29,13 +29,14 @@ exports.default = new class FelixhubDataBase {
     startDataBase() {
         return __awaiter(this, void 0, void 0, function* () {
             // Create Users Table
-            const createUsersTable = `CREATE TABLE users (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            email VARCHAR(50) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL,
-            admin BOOLEAN NOT NULL DEFAULT 0,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )`;
+            const createUsersTable = `CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(50) UNIQUE NOT NULL, 
+        email VARCHAR(50) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        admin BOOLEAN NOT NULL DEFAULT 0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );`;
             yield this.pool.promise().query(createUsersTable);
             // Create Context Table
             const createContextTable = `CREATE TABLE IF NOT EXISTS context (
