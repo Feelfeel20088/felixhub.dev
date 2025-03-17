@@ -2,16 +2,16 @@ import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify';
 import FelixHubServiceBase from '../utility/FelixHubServiceBase';
 import URL from '../utility/config/URLS';
 import SYSTEM from '../utility/config/SYSTEM';
-
+const controller = new AbortController();
 
 
 
 
 export default class FelixHubChatService extends FelixHubServiceBase {
+
     // Define the callback method for the service
     public async callBack(req: FastifyRequest<{ Body: { model: string; content: string; images: string[];} }>, reply: FastifyReply): Promise<void> {
-        const { model } = req.body
-        delete (req as any).body.model; // just to make sure i dont have to set model as optianl
+        const { model, ...rest } = req.body;
         try {
             // Make a POST request to the Ollama API
             const response = await fetch(URL.ollama_internal, {
@@ -29,10 +29,12 @@ export default class FelixHubChatService extends FelixHubServiceBase {
                         },
                         {
                             role: 'user',
-                            ...req.body,
+                            ...rest,
                         },
                     ],
                 }),
+
+                signal: controller.signal
             });
 
             // Handle errors in the API response
@@ -56,7 +58,7 @@ export default class FelixHubChatService extends FelixHubServiceBase {
             // Stream the data from the response to the client
             while (true) {
                 const { done, value } = await reader.read();
-                const bufferedData = decoder.decode(value, { stream: true });
+                // const bufferedData = decoder.decode(value, { stream: true });
 
                 if (done) {
                     console.log('Done reading response');

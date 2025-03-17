@@ -18,29 +18,25 @@ class kahootBotStartSwarm extends FelixHubServiceBase_1.default {
     // ttl default if not provided is 10
     callBack(req, reply) {
         return __awaiter(this, void 0, void 0, function* () {
-            // Handle crash field (converting from 'on' or boolean to true/false)
             req.body.crash = req.body.crash === 'on' || req.body.crash === true;
-            console.log(req.body.ttl);
-            // Perform the external API request
+            if (req.body.amount > 200 || req.body.ttl > 300) {
+                reply.status(400).send({ error: "amount cant be greater then 200 and ttl cannot be greater then 300 (5m)" });
+            }
             try {
-                const response = yield fetch(URLS_1.default.kahootbot_local, {
+                const response = yield fetch(URLS_1.default.kahootbot_internal, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(Object.assign({}, req.body)),
                 });
-                // Check if the response is successful
                 if (!response.ok) {
-                    // Log the error and return an appropriate error response
                     const errorDetails = yield response.text();
-                    console.error(`Error: ${response.status} - ${errorDetails}`);
                     reply.status(response.status).send({ error: `Failed to start swarm: ${errorDetails}` });
                     return;
                 }
-                // If successful, send a success response
                 const responseData = yield response.json();
-                reply.send({ success: true, data: responseData });
+                reply.status(200).send({ success: true, data: responseData });
             }
             catch (error) {
                 // Catch network or other errors

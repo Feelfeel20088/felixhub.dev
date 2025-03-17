@@ -46,9 +46,10 @@ server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
     await felixhub.route("GET", "/AIpage", { fileName: "AI.html" }, "servePage");
     await felixhub.route("GET", "/signup", { fileName: "signup.html" }, "servePage");
     await felixhub.route("GET", "/projects", { fileName: "projects.html" }, "servePage");
-    await felixhub.route("GET", "/projects:projectName", { folder: "../static/documentation/KahootBot" }, "serveQuary");
+    await felixhub.route("GET", "/admin", { fileName: "admin.html" }, "servePage");
+    await felixhub.route("GET", "/Just_Another_Kahootbot:projectName", { folder: "../static/documentation/Just_Another_Kahootbot" }, "serveQuary");
     await felixhub.route("POST", "/chat", null, "AI-service");
-    await felixhub.route("POST", "/kahootswarm", null, "kahootBot-service")
+    await felixhub.route("POST", "/kahootswarm", null, "kahootBot-service");
     await felixhub.setNotFoundHandler({ fileName: "404notfound.html" }, "servePage");
 
     

@@ -8,6 +8,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+//  globles
+let controller = null;
+const submit = document.getElementById('submit');
 let selectedAI;
 function getImageBase64(file) {
     return new Promise((resolve, reject) => {
@@ -26,8 +29,8 @@ function sendMessage() {
         console.log("send message called");
         const userinput = document.getElementById("user-input");
         const output = document.getElementById('output');
-        const submit = document.getElementById('submit');
         const fileinput = document.getElementById('fileInput');
+        controller = new AbortController();
         if (userinput.value.trim() == "")
             return;
         output.innerHTML = "generating...";
@@ -42,42 +45,54 @@ function sendMessage() {
         }
         const imageBase64 = file ? [yield getImageBase64(file)] : [];
         // TODO make sure this thagy can be sent without a file
-        const response = yield fetch('/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                model: selectedAI,
-                content: userinputvar,
-                images: imageBase64
-            })
-        });
-        // put alert here 
-        if (!response.ok) {
-            submit.disabled = false;
-            output.innerHTML = "";
-            throw new Error(yield response.text());
-        }
-        output.innerHTML = ""; // clear the current text. will be changed after i make context a thing
-        const reader = (_b = response.body) === null || _b === void 0 ? void 0 : _b.getReader();
-        const decoder = new TextDecoder();
-        if (!reader)
-            return;
-        while (true) {
-            const { done, value } = yield reader.read();
-            if (done) {
-                submit.disabled = false;
-                console.log("done");
-                return;
-            }
-            const bufferedData = decoder.decode(value, { stream: true });
-            let lines = bufferedData.split('\n');
-            lines = lines.filter(line => line.trim() !== "");
-            lines.forEach(line => {
-                const jsonData = JSON.parse(line);
-                output.innerHTML += jsonData.message.content;
+        try {
+            const response = yield fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: selectedAI,
+                    content: userinputvar,
+                    images: imageBase64
+                }),
+                signal: controller.signal
             });
+            // put alert here 
+            if (!response.ok) {
+                submit.disabled = false;
+                output.innerHTML = yield response.text();
+            }
+            output.innerHTML = ""; // clear the current text. will be changed after i make context a thing
+            const reader = (_b = response.body) === null || _b === void 0 ? void 0 : _b.getReader();
+            const decoder = new TextDecoder();
+            if (!reader)
+                return;
+            while (true) {
+                const { done, value } = yield reader.read();
+                if (done) {
+                    submit.disabled = false;
+                    console.log("done");
+                    return;
+                }
+                const bufferedData = decoder.decode(value, { stream: true });
+                let lines = bufferedData.split('\n');
+                lines = lines.filter(line => line.trim() !== "");
+                lines.forEach(line => {
+                    const jsonData = JSON.parse(line);
+                    output.innerHTML += jsonData.message.content;
+                });
+            }
+        }
+        catch (error) {
+            if (error.name === 'AbortError') {
+                submit.disabled = false;
+                output.innerHTML = "Request was aborted";
+            }
+            else {
+                // Handle other types of errors
+                console.error("An error occurred:", error);
+            }
         }
     });
 }
@@ -135,7 +150,15 @@ document.addEventListener('click', (event) => {
 });
 document.addEventListener('keydown', function (event) {
     // Check if the key pressed is Enter (keyCode 13 or 'Enter' in modern browsers)
-    if (event.key === 'Enter') {
+    console.log("sigma");
+    if (event.key === 'Enter' && !submit.disabled) {
         sendMessage();
+    }
+    else if (event.key === 'Escape') {
+        if (controller) {
+            console.warn("Request was aborted");
+            controller.abort();
+            controller = null;
+        }
     }
 });
