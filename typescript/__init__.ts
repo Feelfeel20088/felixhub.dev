@@ -6,6 +6,7 @@ import cookie from '@fastify/cookie';
 import helmet from '@fastify/helmet';
 import favicon from 'fastify-favicon';
 import FelixHub from "./FelixHub";
+import fs from "fs";
 
 
 
@@ -55,3 +56,70 @@ server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
     
 
 })();
+
+
+import WebSocket, { WebSocketServer } from 'ws';
+import { json } from 'stream/consumers';
+
+// Create WebSocket server
+const wss = new WebSocketServer({ port: 9111 });
+
+console.log('WebSocket server is running on ws://localhost:8080');
+
+wss.on('connection', (ws) => {
+    console.log('New client connected');
+
+    ws.on('message', (message: WebSocket.RawData) => {
+        console.log(message.toString());
+
+
+
+        
+    });
+        
+        
+        
+        
+        let bufferMessage;
+
+
+
+        // if (message instanceof ArrayBuffer) {
+        //     bufferMessage = Buffer.from(message);
+        // } else {
+        //     bufferMessage = message as Buffer;
+        // }
+        
+    
+        // // Write the buffer to a file
+        // fs.writeFile('/home/felix/projects/webserver/src/static/images/output.jpg', bufferMessage, (err) => {
+        //     if (err) {
+        //         console.error('Error writing to file', err);
+        //     } else {
+        //         console.log('Data has been written to output.jpg');
+        //     }
+        // });
+    
+        // // Read image as a Buffer
+        // // const imageBuffer = fs.readFileSync("/home/felix/projects/webserver/src/static/images/mitch.jpg");
+        
+        // // Create the command object with a signal or identifier, without the image itself
+        // const command = {
+        //     command: "Xspy-INIT",
+        //     value: "ee"
+        // };
+        
+        
+        // ws.send(JSON.stringify(command));
+    
+    
+    
+
+    ws.on('close', () => {
+        console.log('Client disconnected');
+    });
+
+    ws.on('error', (err) => {
+        console.error(`WebSocket error: ${err.message}`);
+    });
+});
