@@ -27,15 +27,18 @@
     "@fastify/formbody": "^8.0.1",
     "@fastify/helmet": "^13.0.1",
     "@fastify/static": "^8.0.3",
+    "dotenv": "^16.4.7",
     "fastify": "^5.2.1",
     "fastify-favicon": "^5.0.0",
     "fs": "latest",
     "highlight.js": "^11.11.1",
     "mysql2": "^3.12.0",
-    "path": "latest"
+    "path": "latest",
+    "ws": "^8.18.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
+    "@types/ws": "^8.18.0",
     "typescript": "^5.7.2"
   }
 }

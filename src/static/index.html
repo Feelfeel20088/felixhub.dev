@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="/static/css/input.css">
   <link rel="stylesheet" href="/static/css/scrollbar.css">
   <link rel="stylesheet" href="/static/css/animations.css">
-  <link rel="stylesheet" href="/static/css/video.css">
   <link rel="stylesheet" href="/static/css/base.css">
   <title>felixhub.dev</title>
 
@@ -84,6 +83,15 @@
                 currentTextIndex++;
             }
         }
+
+        document.addEventListener("keydown", function(event) {
+            console.log("Key pressed:", event.key); // Logs the key pressed
+            if (event.key === "Enter") {
+              window.location.href = "/about";
+            }
+        });
+        
+        
 
     // Listen for key press to show the next text
         document.addEventListener('keydown', showNextLine);
