@@ -16,24 +16,22 @@ const promises_1 = __importDefault(require("fs/promises"));
 const path_1 = __importDefault(require("path"));
 const FelixHubServiceBase_1 = __importDefault(require("../utility/FelixHubServiceBase"));
 class ServePageService extends FelixHubServiceBase_1.default {
-    // Implements the callback to handle the route logic
     callBack(req, reply) {
         return __awaiter(this, void 0, void 0, function* () {
             var _a;
-            const fileName = (_a = this.params) === null || _a === void 0 ? void 0 : _a.fileName; // Retrieve the fileName from params
+            const fileName = (_a = this.params) === null || _a === void 0 ? void 0 : _a.fileName;
             console.log(fileName);
             if (!fileName) {
                 reply.status(400).send('Missing fileName parameter');
                 return;
             }
             try {
-                // Read the specified HTML file
-                const filePath = path_1.default.join(__dirname, '../static', fileName);
-                const data = yield promises_1.default.readFile(filePath, 'utf-8');
-                reply.type('text/html').send(data); // Serve the HTML content
+                const filePath = path_1.default.join(__dirname, "..", "..", "static", fileName);
+                const data = yield promises_1.default.readFile(filePath, "utf-8");
+                reply.type("text/html").send(data);
             }
             catch (err) {
-                reply.status(500).send('Error reading the HTML file');
+                reply.status(500).send("Error reading the HTML file");
             }
         });
     }

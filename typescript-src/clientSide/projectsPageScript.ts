@@ -1,3 +1,8 @@
+
+// TODO
+// seperate interfaces 
+// make anamations work
+
 interface GitHubRelease {
     url: string;
     assets_url: string;
@@ -76,17 +81,24 @@ interface GitHubOwner {
 
 
 
-
-  function createProjectCard(project: GitHubRepository, release: GitHubRelease | null): HTMLElement {
+function createProjectCard(
+    project: GitHubRepository,
+    release: GitHubRelease | null,
+    ): HTMLElement {
     const projectLink = document.createElement('div');
-    projectLink.classList.add('project-link');
-  
+    projectLink.classList.add('project-link'); 
+    
     const projectCard = document.createElement('div');
     projectCard.classList.add('project-card');
   
     const projectImage = document.createElement('img');
     projectImage.src = `static/images/${project.name}.jpg`;
     projectImage.classList.add('project-image');
+    projectImage.alt = `${project.name} preview`;
+  
+    projectImage.onerror = () => {
+      projectImage.src = 'static/images/default-image.jpg';
+    };
   
     const projectInfo = document.createElement('div');
     projectInfo.classList.add('project-info');
@@ -108,47 +120,34 @@ interface GitHubOwner {
   
     const githubButton = document.createElement('a');
     githubButton.href = project.html_url || '#';
-    githubButton.target = "_blank";
+    githubButton.target = '_blank';
     githubButton.classList.add('btn');
     githubButton.textContent = 'GitHub';
   
     const documentationButton = document.createElement('a');
-    documentationButton.href = `/${project.name}:documentation`
-    documentationButton.target = "_blank";
+    documentationButton.href = `/${project.name}:documentation`;
+    documentationButton.target = '_blank';
     documentationButton.classList.add('btn');
     documentationButton.textContent = 'Documentation';
   
     const demoButton = document.createElement('a');
-    demoButton.href = `/${project.name}:liveDemo`
-    demoButton.target = "_blank";
+    demoButton.href = `/${project.name}:liveDemo`;
+    demoButton.target = '_blank';
     demoButton.classList.add('btn');
     demoButton.textContent = 'Live Demo';
   
-    // Append buttons to the project buttons section
-    projectButtons.appendChild(githubButton);
-    projectButtons.appendChild(documentationButton);
-    projectButtons.appendChild(demoButton);
+    // Append buttons
+    projectButtons.append(githubButton, documentationButton, demoButton);
   
-    // Append all elements to the project card
-    projectInfo.appendChild(projectTitle);
-    projectInfo.appendChild(projectDescription);
-    projectInfo.appendChild(projectVersion);
-    projectInfo.appendChild(projectButtons);
-  
-    projectCard.appendChild(projectImage);
-    projectCard.appendChild(projectInfo);
-  
+    // Build card
+    projectInfo.append(projectTitle, projectDescription, projectVersion, projectButtons);
+    projectCard.append(projectImage, projectInfo);
     projectLink.appendChild(projectCard);
     
-    projectImage.onerror = () => {
-        projectImage.src = 'static/images/default-image.jpg';
-    };
-  
+    
     return projectLink;
-}
-
-
-
+  }
+  
 
 
 
@@ -162,17 +161,19 @@ interface GitHubOwner {
     for (const repo of repos) {
         const r = await fetch(`https://api.github.com/repos/Feelfeel20088/${repo.name}/releases`);
         const release: GitHubRelease[] = await r.json();
-        if (!release) {
-            const project = createProjectCard(repo, null);
-        }
-        
-        const project = createProjectCard(repo, release[0]);
+        const project = createProjectCard(repo, release[0] || null);
+
         projectsContainer?.appendChild(project);
+        
+        
+        
     }
         
     
     
     
 })();
+
+
 
 

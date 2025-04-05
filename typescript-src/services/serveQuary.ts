@@ -16,7 +16,7 @@ export default class FelixHubServeQueryService extends FelixHubServiceBase {
         const queryName = req.params.projectName;
 
         // Construct the document path
-        const docPath: string = path.join(__dirname, '../static', folder, `${queryName.slice(1)}.html`);
+        const docPath: string = path.join(__dirname, "..", "..", "/static", folder, `${queryName.slice(1)}.html`);
         
         try {
             // Check if the file exists using the utils method

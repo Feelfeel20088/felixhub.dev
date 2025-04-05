@@ -8,7 +8,6 @@
     flex-grow: 1;
     width: 100%;
     box-sizing: border-box;
-    animation: fadeIn 1s ease-in-out, slideInBounce 1s ease-in-out;
 }
 
 /* Scroll image */

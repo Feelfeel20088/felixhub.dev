@@ -1,4 +1,7 @@
 "use strict";
+// TODO
+// seperate interfaces 
+// make anamations work
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -16,6 +19,10 @@ function createProjectCard(project, release) {
     const projectImage = document.createElement('img');
     projectImage.src = `static/images/${project.name}.jpg`;
     projectImage.classList.add('project-image');
+    projectImage.alt = `${project.name} preview`;
+    projectImage.onerror = () => {
+        projectImage.src = 'static/images/default-image.jpg';
+    };
     const projectInfo = document.createElement('div');
     projectInfo.classList.add('project-info');
     const projectTitle = document.createElement('h3');
@@ -31,34 +38,25 @@ function createProjectCard(project, release) {
     projectButtons.classList.add('project-buttons');
     const githubButton = document.createElement('a');
     githubButton.href = project.html_url || '#';
-    githubButton.target = "_blank";
+    githubButton.target = '_blank';
     githubButton.classList.add('btn');
     githubButton.textContent = 'GitHub';
     const documentationButton = document.createElement('a');
     documentationButton.href = `/${project.name}:documentation`;
-    documentationButton.target = "_blank";
+    documentationButton.target = '_blank';
     documentationButton.classList.add('btn');
     documentationButton.textContent = 'Documentation';
     const demoButton = document.createElement('a');
     demoButton.href = `/${project.name}:liveDemo`;
-    demoButton.target = "_blank";
+    demoButton.target = '_blank';
     demoButton.classList.add('btn');
     demoButton.textContent = 'Live Demo';
-    // Append buttons to the project buttons section
-    projectButtons.appendChild(githubButton);
-    projectButtons.appendChild(documentationButton);
-    projectButtons.appendChild(demoButton);
-    // Append all elements to the project card
-    projectInfo.appendChild(projectTitle);
-    projectInfo.appendChild(projectDescription);
-    projectInfo.appendChild(projectVersion);
-    projectInfo.appendChild(projectButtons);
-    projectCard.appendChild(projectImage);
-    projectCard.appendChild(projectInfo);
+    // Append buttons
+    projectButtons.append(githubButton, documentationButton, demoButton);
+    // Build card
+    projectInfo.append(projectTitle, projectDescription, projectVersion, projectButtons);
+    projectCard.append(projectImage, projectInfo);
     projectLink.appendChild(projectCard);
-    projectImage.onerror = () => {
-        projectImage.src = 'static/images/default-image.jpg';
-    };
     return projectLink;
 }
 (() => __awaiter(void 0, void 0, void 0, function* () {
@@ -68,10 +66,7 @@ function createProjectCard(project, release) {
     for (const repo of repos) {
         const r = yield fetch(`https://api.github.com/repos/Feelfeel20088/${repo.name}/releases`);
         const release = yield r.json();
-        if (!release) {
-            const project = createProjectCard(repo, null);
-        }
-        const project = createProjectCard(repo, release[0]);
+        const project = createProjectCard(repo, release[0] || null);
         projectsContainer === null || projectsContainer === void 0 ? void 0 : projectsContainer.appendChild(project);
     }
 }))();

@@ -1,0 +1,119 @@
+/* Sidebar container */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -220px; /* Start hidden */
+    width: 220px;
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    padding-top: 80px;
+    z-index: 1500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Sidebar visible */
+.sidebar.open {
+    right: 0;
+}
+
+/* Sidebar nav links */
+.sidebar nav a {
+    color: #ff7e5f;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin: 10px 0;
+    transition: all 0.3s ease-in-out;
+    display: block;
+    width: 80%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect */
+.sidebar nav a:hover {
+    background-color: #ffeae4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    font-weight: bolder;
+}
+
+/* Underline animation like header */
+.sidebar nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ff7e5f;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+.sidebar nav a:hover::after {
+    width: 80%;
+}
+
+/* Beta badge (reuse the same style) */
+.sidebar .badge {
+    background-color: #007bff;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.sidebar nav a:hover .badge {
+    background-color: #0056b3;
+}
+
+/* Toggle button (open sidebar) */
+.open-btn {
+    background: white;
+    color: #ff7e5f;
+    font-size: 28px;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+.open-btn:hover {
+    background: #fef6f3;
+    transform: scale(1.05);
+}
+
+
+
+/* Close button inside sidebar */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #ff7e5f;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: #e96a4c;
+}

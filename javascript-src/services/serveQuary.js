@@ -27,7 +27,7 @@ class FelixHubServeQueryService extends FelixHubServiceBase_1.default {
             const folder = this.params.folder; // Get folder from params
             const queryName = req.params.projectName;
             // Construct the document path
-            const docPath = path_1.default.join(__dirname, '../static', folder, `${queryName.slice(1)}.html`);
+            const docPath = path_1.default.join(__dirname, "..", "..", "/static", folder, `${queryName.slice(1)}.html`);
             try {
                 // Check if the file exists using the utils method
                 if (yield this.utils.fileExists(docPath)) {
