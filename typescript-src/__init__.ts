@@ -6,7 +6,6 @@ import cookie from '@fastify/cookie';
 import helmet from '@fastify/helmet';
 import favicon from 'fastify-favicon';
 import FelixHub from "./FelixHub";
-import fs from "fs";
 
 
 
@@ -16,17 +15,17 @@ const server = fastify({
 });
 
 server.register(fastifyStatic, {
-    root: path.resolve(__dirname)
+    root: path.resolve(__dirname, "..")
 });
 
 server.register(formbody);
 
 server.register(helmet, {
-    contentSecurityPolicy: false // Disables the Content Security Policy
+    contentSecurityPolicy: false
 });
 
 server.register(favicon, {
-    path: path.join(__dirname, 'static', 'images'),
+    path: path.join(__dirname, '..', 'static', 'images'),
     name: 'favicon.ico',
     maxAge: 3600
 });

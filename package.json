@@ -4,7 +4,8 @@
   "description": "a nice webserver to house my projects and api",
   "main": "__init__.js",
   "scripts": {
-    "start": "node src/__init__.js",
+    "build": "tsc",
+    "start": "node javascript-src/__init__.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

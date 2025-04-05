@@ -50,6 +50,7 @@
 
 /* Style for the typed-text */
 .typed-text {
+    text-align: center;
     font-size: 100px; /* Adjust font size */
     font-family: 'Courier New', Courier, monospace; /* Choose a monospaced font */
     color: white; /* Text color */

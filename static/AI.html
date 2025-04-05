@@ -10,26 +10,32 @@
     <link rel="stylesheet" href="/static/css/input.css">
     <link rel="stylesheet" href="/static/css/scrollbar.css">
     <link rel="stylesheet" href="/static/css/animations.css">
+    <link rel="stylesheet" href="/static/css/sidebar.css">
     <title>felixhub.dev | AI</title>
     
 </head>
 <body>
+    
     <header>
         <div class="header-content">
             <img src="/static/images/favicon.ico" alt="Logo" class="logo">
             <div class="title">felixhub.dev</div>
-            <nav>
-                <a href="/signup">Signup</a>
-                <a href="/AIpage">AI <span class="badge">Beta</span></a>
-                <a href="#faq">FAQ</a>
-                <a href="#contact">Contact</a>
-                <a href="/projects">Projects <span class="badge">Beta</span></a>
-                <a href="/about">About</a> <!-- Properly close the anchor tag -->
-            </nav>
-            
+            <button id="open-btn" class="open-btn">&#9776;</button>
         </div>
     </header>
     
+    <div id="sidebar" class="sidebar">
+        <button id="close-btn" class="close-btn">X</button>
+        <nav>
+            <a href="/signup">Signup</a>
+            <a href="/AIpage">AI <span class="badge">Beta</span></a>
+            <a href="#faq">FAQ</a> 
+            <a href="#contact">Contact</a> 
+            <a href="/projects">Projects <span class="badge">Beta</span></a>
+            <a href="/about">About </a>
+        </nav>
+    </div>
+
     <div class="main-content">
         <div class="text-box">
             <p id="output"></p>
@@ -63,6 +69,7 @@
     </div>
     
     <script src="/clientSide/AI_handle.js"></script>
+    <script src="javascript-src/clientSide/sideBarButtons.js"></script>
     <!-- <script type="module" src="/clientSide/fileUtils.js"></script>
     <script type="module" src="/clientSide/dropdownUtils.js"></script>
     <script type="module" src="/clientSide/chatHandler.js"></script>

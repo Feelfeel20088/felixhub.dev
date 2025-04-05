@@ -23,7 +23,7 @@ class kahootBotStartSwarm extends FelixHubServiceBase_1.default {
                 reply.status(400).send({ error: "amount cant be greater then 200 and ttl cannot be greater then 300 (5m)" });
             }
             try {
-                const response = yield fetch(URLS_1.default.kahootbot_internal, {
+                const response = yield fetch(URLS_1.default.kahootbot_local, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

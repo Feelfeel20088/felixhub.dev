@@ -24,14 +24,14 @@ const server = (0, fastify_1.default)({
     bodyLimit: 1048576000 // Global limit (1 MB)
 });
 server.register(static_1.default, {
-    root: path_1.default.resolve(__dirname)
+    root: path_1.default.resolve(__dirname, "..")
 });
 server.register(formbody_1.default);
 server.register(helmet_1.default, {
-    contentSecurityPolicy: false // Disables the Content Security Policy
+    contentSecurityPolicy: false
 });
 server.register(fastify_favicon_1.default, {
-    path: path_1.default.join(__dirname, 'static', 'images'),
+    path: path_1.default.join(__dirname, '..', 'static', 'images'),
     name: 'favicon.ico',
     maxAge: 3600
 });
