@@ -132,6 +132,7 @@ dropdownButton.addEventListener('click', () => {
 const dropdownOptions = document.querySelectorAll('.dropdown-option');
 dropdownOptions.forEach(option => {
     option.addEventListener('click', (event) => {
+        console.log("sigma");
         const target = event.target;
         selectedAI = target.getAttribute('data-ai');
         if (selectedAI && inputField) {

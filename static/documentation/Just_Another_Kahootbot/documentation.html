@@ -1,81 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Project Documentation</title>
 
     <!-- Link to external CSS files -->
-    <link rel="stylesheet" href="/static/css/documentation.css">
-    <link rel="stylesheet" href="/static/css/main.css">
-    <link rel="stylesheet" href="/static/css/input.css">
-    <link rel="stylesheet" href="/static/css/scrollbar.css">
-    <link rel="stylesheet" href="/static/css/animations.css">
-    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/documentation.css" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="stylesheet" href="/static/css/input.css" />
+    <link rel="stylesheet" href="/static/css/scrollbar.css" />
+    <link rel="stylesheet" href="/static/css/animations.css" />
+    <link rel="stylesheet" href="/static/css/base.css" />
 
-    <!-- Optional: Add any additional meta tags for SEO or other purposes -->
-    <meta name="description" content="Project documentation for the Kahoot Bot library and application.">
-    <meta name="author" content="Your Name">
+    <!-- Meta tags -->
+    <meta name="description" content="Project documentation for the Kahoot Bot library and application." />
+    <meta name="author" content="Felix" />
 
-    <!-- Highlight.js Theme (Atom One Dark from Cloudflare CDN) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
-  
-    <!-- Highlight.js JS from Cloudflare CDN -->
+    <!-- Highlight.js Theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 </head>
 <body>
     <main class="documentation-container">
         <h1>Project Documentation</h1>
-        <p class="doc-text">congradulation you installed my library! This next part will help you get started in working with it. First, add this line to your code:</p>
-        <!-- https://github.com/Feelfeel20088/Just_Another_Kahootbot -->
-        <!-- Python Code Block -->
+        <p class="doc-text">
+            This guide will help you become familiar with the bot on a deeper level.
+            It’s intended for people who want to understand how the bot works and may want to contribute.
+            If you're looking to deploy the bot instead of contributing, please check out the deployment guide on the
+            <a href="https://github.com/Feelfeel20088/Just_Another_Kahootbot" class="text-based-link">GitHub repository</a>
+            or the<a href="/projects/kahootbot_installation" class="text-based-link">installation page.</a>
+        </p>
+
+        <!-- Code Block -->
         <pre><code class="language-python">import KahootBot</code></pre>
-        
         <p class="doc-text">This will import the Kahoot Bot into your project.</p>
 
         <div class="note-box">
-            <p>Note: If you haven't installed Just_Another_KahootBot yet, you can refer to the <a href="/projects/kahootbot_installation" class="text-based-link">installation guide</a>.</p>
+            <p>
+                <strong>Note:</strong> If you haven't installed <em>Just_Another_KahootBot</em> yet, refer to the
+                <a href="/projects/kahootbot_installation" class="text-based-link">installation guide</a>.
+            </p>
         </div>
 
         <div class="text-block">
             <h2>Important Information</h2>
-            <p>This documentation assumes you have a solid understanding of Python. If you're not yet familiar with Python, I recommend reviewing the basics before proceeding. While you can use this library without deep Python knowledge, some advanced features might be difficult to utilize without a stronger grasp of the language. If you're interested in further learning, here are some helpful resources:</p>
+            <p>
+                This documentation assumes you have a solid understanding of Python. If you're not familiar with Python, I recommend reviewing the basics before proceeding.
+                While you can still follow along, some advanced features may be difficult to understand without a deeper grasp of the language. If you're interested in learning more, here are some great resources:
+            </p>
             <ul>
                 <li><a href="https://www.learnpython.org/" class="text-based-link">Learn Python</a></li>
                 <li><a href="https://realpython.com/" class="text-based-link">Real Python</a></li>
                 <li><a href="https://www.w3schools.com/python/" class="text-based-link">W3Schools Python Tutorial</a></li>
             </ul>
         </div>
+
         <div class="text-block">
-            <p>Before diving deeper, it's important to understand how the bot is structured. The bot is divided into two main components:</p>
+            <p>Before diving deeper, it’s important to understand how the bot is structured. It is made up of two main components:</p>
         </div>
-        <h2>Main Parts</h2>
+
+        <h2>Main Components</h2>
         <ul class="doc-list">
-            <li><strong>Main Bot:</strong> This is the component you interact with. It joins games, clicks buttons, and makes intelligent decisions about what to do next. It utilizes Selenium, as mentioned in the installation guide.</li>
-            <li><strong>Answer Getter:</strong> This component fetches and parses game statistics from the Kahoot website to retrieve the answers. It uses BeautifulSoup, as you'll likely have seen in the installation guide.</li>
+            <li>
+                <strong>KahootBot:</strong> This is the main component you interact with. It joins games, answers questions, and makes intelligent decisions about what to do next. It uses WebSockets, as described in the installation guide.
+            </li>
+            <li>
+                <strong>Swarm:</strong> This component manages several KahootBots and ensures they’re running properly. Its primary job is to handle lifetimes, but it also acts as an event handler for certain Kahoot events and decides how to respond.
+            </li>
         </ul>
 
-        <hr class="hr-divider">
+        <hr class="hr-divider" />
 
-        <h2>Installation</h2>
-        <p class="doc-text">To get the project up and running, follow these steps:</p>
-        <ol class="doc-list">
-            <li>Clone the repository.</li>
-            <li>Install the required dependencies.</li>
-            <li>Run the project.</li>
-        </ol>
-
-        <blockquote>
-            "This project serves as an excellent starting point for learning about automation."
-        </blockquote>
-
-        <script>
-            hljs.highlightAll();
-        </script>
+        <script>hljs.highlightAll();</script>
 
         <footer>
-            <p>Project Documentation © 2025</p>
+            <p>felixhub.dev © 2025</p>
         </footer>
     </main>
 </body>
