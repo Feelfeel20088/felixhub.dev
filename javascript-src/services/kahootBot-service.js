@@ -22,8 +22,16 @@ class kahootBotStartSwarm extends FelixHubServiceBase_1.default {
             if (req.body.amount > 200 || req.body.ttl > 300) {
                 reply.status(400).send({ error: "amount cant be greater then 200 and ttl cannot be greater then 300 (5m)" });
             }
+            const index = req.body.gamepin.indexOf("pin=");
+            let gamepin = "";
+            if (req.body.gamepin.indexOf("pin=") !== -1) {
+                for (let i = index + 4; !isNaN(Number(req.body.gamepin[i])); i++) {
+                    gamepin += req.body.gamepin[i];
+                }
+                req.body.gamepin = gamepin;
+            }
             try {
-                const response = yield fetch(URLS_1.default.kahootbot_local, {
+                const response = yield fetch(URLS_1.default.kahootbot_internal, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
