@@ -14,7 +14,7 @@ export default class FelixHubChatService extends FelixHubServiceBase {
         const { model, ...rest } = req.body;
         try {
             // Make a POST request to the Ollama API
-            const response = await fetch(URL.ollama_local, {
+            const response = await fetch(URL.ollama_internal, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,6 +37,8 @@ export default class FelixHubChatService extends FelixHubServiceBase {
                 signal: controller.signal
             });
 
+            
+            
             // Handle errors in the API response
             if (!response.ok) {
                 let reason = await response.text()
@@ -46,23 +48,23 @@ export default class FelixHubChatService extends FelixHubServiceBase {
             }
 
             const reader = response.body?.getReader();
-            // const decoder = new TextDecoder();
+            const decoder = new TextDecoder();
 
             if (!reader) {
                 reply.status(500).send({ error: 'No data in the response' });
                 return;
             }
 
-            reply.type('text/event-stream');
-            reply.header('Cache-Control', 'no-store');
-            reply.header('Connection', 'keep-alive');
-            reply.header('Transfer-Encoding', 'chunked');
+            reply.raw.setHeader('Content-Type', 'text/event-stream');
+            reply.raw.setHeader('Cache-Control', 'no-cache');
+            reply.raw.setHeader('Connection', 'keep-alive');
+            reply.raw.flushHeaders();
 
             // Stream the data from the response to the client
             while (true) {
                 const { done, value } = await reader.read();
-                // const bufferedData = decoder.decode(value, { stream: true });
-
+                const bufferedData = decoder.decode(value, { stream: true });
+                console.log("data: ", bufferedData);
                 if (done) {
                     console.log('Done reading response');
                     reply.raw.end();

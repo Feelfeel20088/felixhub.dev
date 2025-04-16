@@ -35,7 +35,7 @@ class FelixHubChatService extends FelixHubServiceBase_1.default {
             const _b = req.body, { model } = _b, rest = __rest(_b, ["model"]);
             try {
                 // Make a POST request to the Ollama API
-                const response = yield fetch(URLS_1.default.ollama_local, {
+                const response = yield fetch(URLS_1.default.ollama_internal, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -66,14 +66,15 @@ class FelixHubChatService extends FelixHubServiceBase_1.default {
                     reply.status(500).send({ error: 'No data in the response' });
                     return;
                 }
-                reply.type('text/event-stream');
-                reply.header('Cache-Control', 'no-cache');
-                reply.header('Connection', 'keep-alive');
-                reply.header('Transfer-Encoding', 'chunked');
+                reply.raw.setHeader('Content-Type', 'text/event-stream');
+                reply.raw.setHeader('Cache-Control', 'no-cache');
+                reply.raw.setHeader('Connection', 'keep-alive');
+                reply.raw.flushHeaders();
                 // Stream the data from the response to the client
                 while (true) {
                     const { done, value } = yield reader.read();
-                    // const bufferedData = decoder.decode(value, { stream: true });
+                    const bufferedData = decoder.decode(value, { stream: true });
+                    console.log("data: ", bufferedData);
                     if (done) {
                         console.log('Done reading response');
                         reply.raw.end();
