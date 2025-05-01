@@ -12,9 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const FelixHubServiceBase_1 = __importDefault(require("../utility/FelixHubServiceBase"));
 const URLS_1 = __importDefault(require("../utility/config/URLS"));
-class kahootBotStartSwarm extends FelixHubServiceBase_1.default {
+const RootFelixHubServiceBase_1 = __importDefault(require("../utility/RootFelixHubServiceBase"));
+class kahootBotStartSwarm extends RootFelixHubServiceBase_1.default {
     // ttl default if not provided is 10
     callBack(req, reply) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -45,11 +45,13 @@ class kahootBotStartSwarm extends FelixHubServiceBase_1.default {
                 }
                 const responseData = yield response.json();
                 reply.status(200).send({ success: true, data: responseData });
+                return;
             }
             catch (error) {
                 // Catch network or other errors
                 console.error('Error during external request:', error);
                 reply.status(500).send({ error: 'Internal Server Error' });
+                return;
             }
         });
     }

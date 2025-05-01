@@ -8,20 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const promises_1 = __importDefault(require("fs/promises"));
-function fileExists(filePath) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield promises_1.default.access(filePath);
-            return true;
-        }
-        catch (error) {
-            return false;
-        }
-    });
+class RootFelixHubServiceBase {
+    prehandler(request, reply) {
+        return __awaiter(this, void 0, void 0, function* () { return; });
+    }
+    ; // do nothing non restricted route
 }
-exports.default = fileExists;
+RootFelixHubServiceBase.n = "RootFelixHubServiceBase";
+exports.default = RootFelixHubServiceBase;

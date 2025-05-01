@@ -1,0 +1,19 @@
+{{- if .Values.service.external.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-felixhub-external
+  labels:
+    app: felixhub
+spec:
+  selector:
+    app: felixhub
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      {{- if .Values.service.external.nodePort }}
+      nodePort: {{ .Values.service.external.nodePort }}
+      {{- end }}
+  type: NodePort
+{{- end }}

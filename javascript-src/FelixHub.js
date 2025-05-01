@@ -27,18 +27,27 @@ class FelixHub {
     getService(params, service) {
         return __awaiter(this, void 0, void 0, function* () {
             // Set parameters for the specified service
-            let serviceClass = this.controllers.getServiceClass(service);
+            const serviceClass = this.controllers.getServiceClass(service);
             if (!serviceClass) {
                 throw new Error(`server class ${service} not found`);
             }
+            console.log("serveice: ", service, "sub: ", serviceClass.n);
             this.controllers.registerService(service, serviceClass);
-            this.controllers.setServiceParams(service, params);
+            const serviceInstance = this.controllers.getServiceInstance(service);
+            if (!serviceInstance) {
+                throw new Error(`server instance was not found. try calling instanceofcontroller.registerService(service, serviceClass)`);
+            }
+            this.controllers.setServiceParams(serviceInstance, params);
             // Retrieve the bound callback for the service
-            const callBack = this.controllers.getServiceCallback(service);
+            const callBack = this.controllers.getServiceCallback(serviceInstance);
+            const prehandler = this.controllers.getServicePrehandler(serviceInstance);
             if (!callBack) {
                 throw new Error(`Service instance ${service} not found or does not provide a valid callback.`);
             }
-            return callBack;
+            if (!prehandler) {
+                throw new Error(`Service instance ${service} does not provide a valid prehandler.`);
+            }
+            return { callBack, prehandler };
         });
     }
     /**
@@ -51,11 +60,12 @@ class FelixHub {
     route(method, url, params, service) {
         return __awaiter(this, void 0, void 0, function* () {
             // Register the route with Fastify
-            const callBack = yield this.getService(params, service);
+            const { callBack, prehandler } = yield this.getService(params, service);
             this.server.route({
                 method,
                 url,
                 handler: callBack,
+                preHandler: prehandler
             });
         });
     }
@@ -64,7 +74,7 @@ class FelixHub {
     // ------------------------
     setNotFoundHandler(params, service) {
         return __awaiter(this, void 0, void 0, function* () {
-            const callBack = yield this.getService(params, service);
+            const { callBack, prehandler } = yield this.getService(params, service);
             this.server.setNotFoundHandler(callBack);
         });
     }

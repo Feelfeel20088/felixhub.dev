@@ -1,13 +1,13 @@
 import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify';
-import FelixHubServiceBase from '../utility/FelixHubServiceBase';
 import URL from '../utility/config/URLS';
 import SYSTEM from '../utility/config/SYSTEM';
+import RootFelixHubServiceBase from '../utility/RootFelixHubServiceBase';
 const controller = new AbortController();
 
 
 
 
-export default class FelixHubChatService extends FelixHubServiceBase {
+export default class FelixHubChatService extends RootFelixHubServiceBase {
 
     // Define the callback method for the service
     public async callBack(req: FastifyRequest<{ Body: { model: string; content: string; images: string[];} }>, reply: FastifyReply): Promise<void> {

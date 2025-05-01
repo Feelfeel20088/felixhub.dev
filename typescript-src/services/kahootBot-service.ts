@@ -1,9 +1,10 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import FelixHubServiceBase from '../utility/FelixHubServiceBase';
 import URL from '../utility/config/URLS';
+import RootFelixHubServiceBase from '../utility/RootFelixHubServiceBase';
+import ApiFelixHubServiceBase from '../utility/ApiFelixHubServiceBase';
 
 
-export default class kahootBotStartSwarm extends FelixHubServiceBase {
+export default class kahootBotStartSwarm extends RootFelixHubServiceBase {
     
     // ttl default if not provided is 10
     async callBack(req: FastifyRequest<{
@@ -56,10 +57,12 @@ export default class kahootBotStartSwarm extends FelixHubServiceBase {
             
             const responseData = await response.json();
             reply.status(200).send({ success: true, data: responseData });
+            return;
         } catch (error) {
             // Catch network or other errors
             console.error('Error during external request:', error);
             reply.status(500).send({ error: 'Internal Server Error' });
+            return;
         }
     }
 }

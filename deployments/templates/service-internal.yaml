@@ -1,7 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: felixhub-internal
+  name: {{ .Release.Name }}-felixhub-internal
+  labels:
+    app: felixhub
 spec:
   selector:
     app: felixhub

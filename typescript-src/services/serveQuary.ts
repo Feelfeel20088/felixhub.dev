@@ -1,9 +1,10 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import path from 'path';
 import fs from 'fs/promises';
-import FelixHubServiceBase from '../utility/FelixHubServiceBase';
+import RootFelixHubServiceBase from '../utility/RootFelixHubServiceBase';
+import ApiFelixHubServiceBase from '../utility/ApiFelixHubServiceBase';
 
-export default class FelixHubServeQueryService extends FelixHubServiceBase {
+export default class FelixHubServeQueryService extends ApiFelixHubServiceBase {
     // Override the callback method to implement the service logic
     public async callBack(req: FastifyRequest<{ Params: { projectName: string } }>, reply: FastifyReply): Promise<void> {
         // Ensure params has the folder key

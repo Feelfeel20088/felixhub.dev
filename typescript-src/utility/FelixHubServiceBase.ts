@@ -1,11 +1,12 @@
 import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify';
 import Utils from './utils/Utils'
-
-export default abstract class FelixHubServiceBase {
-    utils!: Utils; // Instance of Utils, initialized later
-    server!: FastifyInstance; // Instance of Fastify, initialized late
+export default interface FelixHubServiceBase {
+    n: string;
+    prehandler: (request: FastifyRequest, reply: FastifyReply) => Promise<void>;
+    utils?: Utils; // Optional, will be initialized later
+    server?: FastifyInstance; // Optional, will be initialized later
     params?: Record<string, any>; // Custom parameters passed to the service
-    abstract callBack(req: FastifyRequest, reply: FastifyReply): void;
+
+    // Define the abstract method signature in the interface
+    callBack(req: FastifyRequest, reply: FastifyReply): void;
 }
-  
-    // Abstract method to be implemented by services

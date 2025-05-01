@@ -14,8 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
 const promises_1 = __importDefault(require("fs/promises"));
-const FelixHubServiceBase_1 = __importDefault(require("../utility/FelixHubServiceBase"));
-class FelixHubServeQueryService extends FelixHubServiceBase_1.default {
+const ApiFelixHubServiceBase_1 = __importDefault(require("../utility/ApiFelixHubServiceBase"));
+class FelixHubServeQueryService extends ApiFelixHubServiceBase_1.default {
     // Override the callback method to implement the service logic
     callBack(req, reply) {
         return __awaiter(this, void 0, void 0, function* () {

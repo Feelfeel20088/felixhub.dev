@@ -2,7 +2,7 @@ import { FastifyInstance, RouteOptions } from "fastify";
 import Controllers from "./controllers";
 import Utils from "./utility/utils/Utils";
 import { error } from "console";
-import FelixHubServiceBase from "./utility/FelixHubServiceBase";
+import FelixHubServiceBase from "./utility/RootFelixHubServiceBase";
 
 export default class FelixHub {
     server: FastifyInstance;
@@ -18,22 +18,33 @@ export default class FelixHub {
     }
 
     private async getService(params: any, service: string) {
+
         // Set parameters for the specified service
-        let serviceClass = this.controllers.getServiceClass(service);
+        const serviceClass = this.controllers.getServiceClass(service);
         if (!serviceClass) {
             throw new Error(`server class ${service} not found`);
-        }  
+        } 
+        console.log("serveice: ", service, "sub: ", serviceClass.n)
         this.controllers.registerService(service, serviceClass);
-        this.controllers.setServiceParams(service, params);
+        const serviceInstance = this.controllers.getServiceInstance(service);
+        if (!serviceInstance) {
+            throw new Error(`server instance was not found. try calling instanceofcontroller.registerService(service, serviceClass)`)
+        }
+        this.controllers.setServiceParams(serviceInstance, params);
 
         // Retrieve the bound callback for the service
-        const callBack = this.controllers.getServiceCallback(service);
+        const callBack = this.controllers.getServiceCallback(serviceInstance);
+        const prehandler = this.controllers.getServicePrehandler(serviceInstance)
 
         if (!callBack) {
             throw new Error(`Service instance ${service} not found or does not provide a valid callback.`);
         }
 
-        return callBack;
+        if (!prehandler) {
+            throw new Error(`Service instance ${service} does not provide a valid prehandler.`);
+        }
+
+        return { callBack, prehandler };
 
     }
 
@@ -51,12 +62,14 @@ export default class FelixHub {
         service: string
     ): Promise<void> {
         // Register the route with Fastify
-        const callBack = await this.getService(params, service); 
-
+        const { callBack, prehandler } = await this.getService(params, service);
+        
+        
         this.server.route({
             method,
             url,
             handler: callBack,
+            preHandler: prehandler
         } as RouteOptions);
     }
 
@@ -65,7 +78,7 @@ export default class FelixHub {
     //        wrappers 
     // ------------------------
     async setNotFoundHandler(params: any, service: string) {
-        const callBack = await this.getService(params, service); 
+        const { callBack, prehandler } = await this.getService(params, service); 
         this.server.setNotFoundHandler(callBack);
     }
 

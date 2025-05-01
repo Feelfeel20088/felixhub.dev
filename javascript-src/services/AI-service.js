@@ -23,11 +23,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const FelixHubServiceBase_1 = __importDefault(require("../utility/FelixHubServiceBase"));
 const URLS_1 = __importDefault(require("../utility/config/URLS"));
 const SYSTEM_1 = __importDefault(require("../utility/config/SYSTEM"));
+const RootFelixHubServiceBase_1 = __importDefault(require("../utility/RootFelixHubServiceBase"));
 const controller = new AbortController();
-class FelixHubChatService extends FelixHubServiceBase_1.default {
+class FelixHubChatService extends RootFelixHubServiceBase_1.default {
     // Define the callback method for the service
     callBack(req, reply) {
         return __awaiter(this, void 0, void 0, function* () {
