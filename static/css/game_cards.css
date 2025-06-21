@@ -1,0 +1,83 @@
+.games-graph {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    overflow-x: auto;
+    overflow: visible;
+    padding-bottom: 1rem;
+}
+
+.game-card {
+    position: relative;
+    flex: 0 0 auto;
+    width: 220px;
+    background-color: #1c1c1c;
+    border: 2px solid transparent;
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.game-card::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet, red);
+    background-size: 800% 800%;
+    /* bigger for smooth animation */
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: rainbow 4s linear infinite;
+    pointer-events: none;
+    /* so it doesn't interfere with mouse */
+}
+
+.game-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.game-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 20px #00bfff77;
+    background-color: #262626;
+}
+
+.game-card img {
+    width: 100%;
+    max-width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 2px solid #00BFFF;
+}
+
+.game-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.4rem;
+    color: #FFA500;
+}
+
+.game-card p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #00BFFF;
+}

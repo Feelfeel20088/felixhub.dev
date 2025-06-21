@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
     <!-- Link only the CSS files needed for this page -->
     <link rel="stylesheet" href="/static/css/base.css">
     <link rel="stylesheet" href="/static/css/header.css">
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="/static/css/sidebar.css">
     <title>felixhub.dev | about</title>
 </head>
+
 <body>
     <header>
         <div class="header-content on-scroll slide-in">
@@ -23,14 +25,14 @@
             <button id="open-btn" class="open-btn">&#9776;</button>
         </div>
     </header>
-    
+
     <div id="sidebar" class="sidebar">
         <button id="close-btn" class="close-btn">X</button>
         <nav>
             <a href="/signup">Signup</a>
             <a href="/AIpage">AI <span class="badge">Beta</span></a>
-            <a href="#faq">FAQ</a> 
-            <a href="#contact">Contact</a> 
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
             <a href="/projects">Projects <span class="badge">Beta</span></a>
             <a href="/about">About </a>
         </nav>
@@ -41,37 +43,58 @@
         <div class="text-box on-scroll bounce-in">
             <h2>Hi I'm Felix</h2>
             <p>
-                I’m a 16-year-old sophomore programmer who codes for fun! 
-                I aspire to attend DePaul University in Illinois to obtain a Computer Science degree, followed by a master's degree. 
-                I am open to working on any freelance project. 
-                I am passionate about problem-solving and innovation and believe that technology can transform our world!
+                I’m a 16-year-old sophomore programmer who codes for fun!
+                I aspire to attend Northwestern University in Illinois to obtain a Computer Science degree, followed by
+                a master's degree. I am open to working on any freelance project.
+                I am passionate about problem-solving and innovation and believe that technology can transform our
+                world!
             </p>
         </div>
 
         <div class="text-box on-scroll bounce-in">
             <h2>Some Information</h2>
-            This site is hosted on my local NixOS k3s cluster at my residence. It employs Fastify for serving and ngrok as a reverse proxy. Additionally, several other applications operate on different ports. The primary objectives of this website are:
-            <br> <strong>1.</strong> To showcase my projects and code to the public and potential interviewers.
-            <br> <strong>2.</strong> To expose my services, allowing my applications to access my k3s cluster.
-            <br>
-            You may notice the api.felixhub.dev subdomain; this includes endpoints for various services running on my k3s cluster. If you attempt to utilize them without authorization, you will be redirected to the login page, as access requires a special key. 
-            If you wish to access these services, please <a class="text-based-link" href="#contact">contact me</a>.
+            This site is hosted on my local NixOS K3s cluster, located at my residence. It uses Fastify as the web
+            server and
+            routes traffic through Cloudflare as the reverse proxy for enhanced security and performance. Various other
+            applications run on separate ports within the cluster.
+
+            <br><br><strong>Primary goals of this website:</strong>
+            <br> <strong>1.</strong> Showcase my personal projects and code for public viewing and potential
+            interviewers.
+            <br> <strong>2.</strong> Provide access to services running on my K3s cluster for use by my applications and
+            you!
+
+            <br><br>You might encounter subdomains such as <code>api.felixhub.dev</code>, which exposes various service
+            endpoints. Access to these APIs requires a special authorization key — unauthorized requests will redirect
+            to a
+            login page.
+
+            <br><br>I also host a game server under <code>games.felixhub.dev</code>, which connects to services running
+            inside
+            my cluster to support real-time and multiplayer games.
+
+            <br><br>If you are interested in using any of these services, please <a class="text-based-link"
+                href="#contact">contact me</a>.
         </div>
+
 
         <div class="faq on-scroll pop-in" id="faq">
             <div class="faq-box">
                 <h2>FAQ</h2>
                 <div class="faq-item on-scroll slide-in">
                     <strong>Q: How can you download my programs?</strong><br>
-                    <strong>A:</strong> You can download both binaries and source code directly from my GitHub page. Just head to the "Projects" section for all the links and details.
+                    <strong>A:</strong> You can download both binaries and source code directly from my GitHub page.
+                    Just head to the "Projects" section for all the links and details.
                 </div>
                 <div class="faq-item on-scroll slide-in">
                     <strong>Q: What programming languages do you use?</strong><br>
-                    <strong>A:</strong> I primarily use Python, Typescript, Rust and Swift. However, I have programmed applications and tools in C++, and I'm always open to learning new languages!
+                    <strong>A:</strong> I primarily use Python, Typescript, Rust and Swift. However, I have programmed
+                    applications and tools in C++, and I'm always open to learning new languages!
                 </div>
                 <div class="faq-item on-scroll slide-in">
                     <strong>Q: Do you take freelance projects?</strong><br>
-                    <strong>A:</strong> Yes! I’m open to freelance opportunities. Feel free to reach out via the contact section.
+                    <strong>A:</strong> Yes! I’m open to freelance opportunities. Feel free to reach out via the contact
+                    section.
                 </div>
                 <div class="faq-item on-scroll slide-in">
                     <strong>Q: How can I contact you?</strong><br>
@@ -80,12 +103,13 @@
             </div>
         </div>
     </div>
-    
-    
+
+
     <script src="javascript-src/clientSide/Slider.js"></script>
     <script src="javascript-src/clientSide/sideBarButtons.js"></script>
     <footer>
         <p>&copy; 2025 felixhub.dev. All rights reserved.</p>
     </footer>
 </body>
+
 </html>

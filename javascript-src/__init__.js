@@ -12,12 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fastify_1 = __importDefault(require("fastify"));
 const formbody_1 = __importDefault(require("@fastify/formbody"));
-const static_1 = __importDefault(require("@fastify/static"));
-const path_1 = __importDefault(require("path"));
 const helmet_1 = __importDefault(require("@fastify/helmet"));
+const static_1 = __importDefault(require("@fastify/static"));
+const fastify_1 = __importDefault(require("fastify"));
 const fastify_favicon_1 = __importDefault(require("fastify-favicon"));
+const path_1 = __importDefault(require("path"));
 const FelixHub_1 = __importDefault(require("./FelixHub"));
 const server = (0, fastify_1.default)({
     logger: true,
@@ -51,6 +51,7 @@ server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
     yield felixhub.route("GET", "/signup", { fileName: "signup.html" }, "servePage");
     yield felixhub.route("GET", "/projects", { fileName: "projects.html" }, "servePage");
     yield felixhub.route("GET", "/admin", { fileName: "admin.html" }, "servePage");
+    yield felixhub.route("GET", "/games", { fileName: "games.html" }, "servePage");
     yield felixhub.route("GET", "/Just_Another_Kahootbot:projectName", { folder: "../static/documentation/Just_Another_Kahootbot" }, "serveQuary");
     yield felixhub.route("POST", "/chat", null, "AI-service");
     yield felixhub.route("POST", "/kahootswarm", null, "kahootBot-service");

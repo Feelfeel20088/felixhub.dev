@@ -1,10 +1,9 @@
-import fastify from 'fastify';
 import formbody from '@fastify/formbody';
-import fastifyStatic from '@fastify/static';
-import path from 'path';
-import cookie from '@fastify/cookie';
 import helmet from '@fastify/helmet';
+import fastifyStatic from '@fastify/static';
+import fastify from 'fastify';
 import favicon from 'fastify-favicon';
+import path from 'path';
 import FelixHub from "./FelixHub";
 
 
@@ -47,18 +46,18 @@ server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
     await felixhub.route("GET", "/signup", { fileName: "signup.html" }, "servePage");
     await felixhub.route("GET", "/projects", { fileName: "projects.html" }, "servePage");
     await felixhub.route("GET", "/admin", { fileName: "admin.html" }, "servePage");
+    await felixhub.route("GET", "/games", { fileName: "games.html" }, "servePage");
     await felixhub.route("GET", "/Just_Another_Kahootbot:projectName", { folder: "../static/documentation/Just_Another_Kahootbot" }, "serveQuary");
     await felixhub.route("POST", "/chat", null, "AI-service");
     await felixhub.route("POST", "/kahootswarm", null, "kahootBot-service");
     await felixhub.setNotFoundHandler({ fileName: "404notfound.html" }, "servePage");
+    
 
     
 
 })();
 
 
-import WebSocket, { WebSocketServer } from 'ws';
-import { json } from 'stream/consumers';
 
 // Create WebSocket server
 // const wss = new WebSocketServer({ port: 9111 });

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Link only the CSS files needed for this page -->
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/animations.css">
+    <link rel="stylesheet" href="/static/css/scrollbar.css">
+    <link rel="stylesheet" href="/static/css/sidebar.css">
+    <link rel="stylesheet" href="/static/css/game_cards.css">
+    <title>games.felixhub.dev</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-content on-scroll slide-in">
+            <img src="/static/images/favicon.ico" alt="Logo" class="logo">
+            <div class="title">felixhub.dev</div>
+            <button id="open-btn" class="open-btn">&#9776;</button>
+        </div>
+    </header>
+
+    <div id="sidebar" class="sidebar">
+        <button id="close-btn" class="close-btn">X</button>
+        <nav>
+            <a href="/signup">Signup</a>
+            <a href="/AIpage">AI <span class="badge">Beta</span></a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <a href="/projects">Projects <span class="badge">Beta</span></a>
+            <a href="/about">About </a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+
+        <div class="text-box on-scroll bounce-in">
+            <h2>Welcome to <code>games.felixhub.dev</code></h2>
+            <p>
+                My friends and I love gaming, so we host a variety of dedicated game servers at
+                <strong>games.felixhub.dev</strong>. These servers are open for anyone to join and play! Below, you’ll
+                find a list
+                of all
+                currently available games.
+                <br><br>
+                If no specific port is mentioned, the server uses the game’s default port. That means in most cases, you
+                can
+                simply enter <code>games.felixhub.dev</code> directly into your game’s “connect to server” box and
+                you’re good to go.
+                <br><br>
+                here is all the servers we are hosting:
+
+            </p>
+        </div>
+
+        <div class="games-graph">
+            <div class="game-card">
+                <h3>Satisfactory</h3>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGnjlyYoEwCvLrfpTzLRGskCt7jb6H5HEdVA&s"
+                    alt="Minecraft">
+
+            </div>
+            <div class="game-card">
+                <h3>Terraria</h3>
+                <p>Port: 7777</p>
+            </div>
+            <div class="game-card">
+                <h3>Valheim</h3>
+                <p>Default Port</p>
+            </div>
+            <div class="game-card">
+                <h3>CS:GO</h3>
+                <p>Port: 27015</p>
+            </div>
+            <!-- Add more games as needed -->
+        </div>
+
+
+
+
+
+        <script src="javascript-src/clientSide/Slider.js"></script>
+        <script src="javascript-src/clientSide/sideBarButtons.js"></script>
+        <footer>
+            <p>&copy; 2025 felixhub.dev. All rights reserved.</p>
+        </footer>
+</body>
+
+</html>
