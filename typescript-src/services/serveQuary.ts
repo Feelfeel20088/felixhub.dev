@@ -1,10 +1,9 @@
-import { FastifyRequest, FastifyReply } from 'fastify';
-import path from 'path';
+import { FastifyReply, FastifyRequest } from 'fastify';
 import fs from 'fs/promises';
+import path from 'path';
 import RootFelixHubServiceBase from '../utility/RootFelixHubServiceBase';
-import ApiFelixHubServiceBase from '../utility/ApiFelixHubServiceBase';
 
-export default class FelixHubServeQueryService extends ApiFelixHubServiceBase {
+export default class FelixHubServeQueryService extends RootFelixHubServiceBase {
     // Override the callback method to implement the service logic
     public async callBack(req: FastifyRequest<{ Params: { projectName: string } }>, reply: FastifyReply): Promise<void> {
         // Ensure params has the folder key
@@ -18,7 +17,7 @@ export default class FelixHubServeQueryService extends ApiFelixHubServiceBase {
 
         // Construct the document path
         const docPath: string = path.join(__dirname, "..", "..", "/static", folder, `${queryName.slice(1)}.html`);
-        
+
         try {
             // Check if the file exists using the utils method
             if (await this.utils.fileExists(docPath)) {
