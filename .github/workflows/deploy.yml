@@ -13,11 +13,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: build nix image
+        run: nix --extra-experimental-features 'flakes nix-command' build .#dockerImage
+      
+      - name: load nix image
+        run: docker load < result
+
+      - name: tag docker image
+        run: docker tag felixhub.dev:latest ${{ secrets.DOCKERHUBUSER }}/felixhub.dev:latest
+
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKERHUBPASS }}" | docker login -u "${{ secrets.DOCKERHUBUSER }}" --password-stdin
-
-      - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKERHUBUSER }}/felixhub.dev:latest .
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUBUSER }}/felixhub.dev:latest
