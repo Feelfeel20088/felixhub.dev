@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,24 +11,25 @@
     <link rel="stylesheet" href="/static/css/input.css">
     <link rel="stylesheet" href="/static/css/scrollbar.css">
     <link rel="stylesheet" href="/static/css/animations.css">
+    <link rel="stylesheet" href="/static/css/sidebar.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js Library -->
 </head>
+
 <body>
 
     <!-- Header Section -->
-    <header>
-        <nav class="navbar">
-            <div class="navbar-logo">
-                <h2>Admin Panel</h2>
-            </div>
-            <nav class="navbar-menu">
-                <a href="#">Dashboard</a>
-                <a href="#">Users</a>
-                <a href="#">Settings</a>
-                <a href="#">Logout</a>
-            </nav>
+    <div id="sidebar" class="sidebar">
+        <button id="close-btn" class="close-btn">X</button>
+        <nav>
+            <a href="/signup">Signup</a>
+            <a href="https://ai.felixhub.dev">AI <span class="badge">Beta</span></a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <a href="/projects">Projects <span class="badge">Beta</span></a>
+            <a href="/about">About </a>
+            <a href="/games">Games </a>
         </nav>
-    </header>
+    </div>
 
     <!-- Main Content -->
     <div class="main-content">
@@ -50,7 +52,7 @@
 
     <!-- Chart.js Script -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const ctx = document.getElementById('adminChart').getContext('2d');
             const adminChart = new Chart(ctx, {
                 type: 'line', // Line chart for user trends
@@ -78,4 +80,5 @@
     </script>
 
 </body>
+
 </html>
