@@ -10,11 +10,16 @@
       systems = flake-utils.lib.defaultSystems;
 
       perSystem = { system, pkgs, ... }: let
-        extendedPkgs = pkgs.extend self.overlays.default;
+        felixhub = import ./nix/default.nix { 
+          inherit pkgs;
+          lib = pkgs.lib;
+          buildNpmPackage = pkgs.buildNpmPackage;
+        };
+        extendedPkgs = pkgs.extend felixhub;
       in 
       {
         packages = {
-          default = extendedPkgs.my-cli;
+          default = extendedPkgs.felixhub;
         };
 
         devShells.default = extendedPkgs.mkShell {
@@ -23,11 +28,6 @@
             extendedPkgs.typescript
           ];
         };
-      };
-
-
-      flake = {
-        overlays.default = import ./nix/felixhub.nix { };
       };
     };
 }
