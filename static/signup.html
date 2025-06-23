@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
+
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,22 +13,20 @@
     <link rel="stylesheet" href="/static/css/main.css">
     <title>felixhub.dev | signup</title>
 </head>
+
 <body>
-    <header>
-        <div class="header-content">
-            <img src="/static/images/favicon.ico" alt="Logo" class="logo">
-            <div class="title">felixhub.dev</div>
-            <nav>
-                <a href="/signup">Signup</a>
-                <a href="/AIpage">AI  <span class="badge">Beta</span></a>
-                <a href="#faq">FAQ</a>
-                <a href="#contact">Contact</a>
-                <a href="/projects">Projects <span class="badge">Beta</span></a>
-                <a href="/about">About 
-            </nav>
-        </div>
-    </header>
-    
+    <div id="sidebar" class="sidebar">
+        <button id="close-btn" class="close-btn">X</button>
+        <nav>
+            <a href="/signup">Signup</a>
+            <a href="ai.felixhub.dev">AI <span class="badge">Beta</span></a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <a href="/projects">Projects <span class="badge">Beta</span></a>
+            <a href="/about">About </a>
+            <a href="/games">Games </a>
+        </nav>
+    </div>
 
     <div class="form-container">
         <h2>Create Your Account</h2>
@@ -42,7 +41,8 @@
                 <input type="password" id="password" class="styled-input" placeholder="Password" required>
             </div>
             <div class="input-box">
-                <input type="password" id="confirm-password" class="styled-input" placeholder="Confirm Password" required>
+                <input type="password" id="confirm-password" class="styled-input" placeholder="Confirm Password"
+                    required>
             </div>
             <div class="input-box">
                 <button type="submit" class="styled-button">Sign Up</button>
@@ -53,4 +53,5 @@
         <p>&copy; 2025 felixhub.dev. All rights reserved.</p>
     </footer>
 </body>
+
 </html>
