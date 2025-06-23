@@ -12,17 +12,6 @@ let
 
     NODE_OPTIONS = "--openssl-legacy-provider";
 
-    propagatedBuildInputs = [ pkgs.nodejs_23 ];
-
-
-    installPhase = ''
-        mkdir -p $out/bin
-        echo '#!/bin/sh' > $out/bin/felixhub-portfolio-site
-        echo 'npm start' >> $out/bin/felixhub-portfolio-site
-        chmod +x $out/bin/felixhub-portfolio-site
-    '';
-
-
     meta = {
       description = "Portfolio website for Felix Vujasin";
       homepage = "https://felixhub.dev";

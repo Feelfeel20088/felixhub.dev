@@ -1,17 +1,11 @@
-FROM node:latest
+FROM nixos/nix
 
 WORKDIR /app
 
-
-COPY package*.json ./
-
-RUN npm install --production
-
-
 COPY . .
 
+RUN nix --extra-experimental-features 'flakes nix-command' build
 
 EXPOSE 8080
 
-
-CMD ["npm", "start"]
+CMD ["nix", "--extra-experimental-features", "flakes nix-command", "run", "."]

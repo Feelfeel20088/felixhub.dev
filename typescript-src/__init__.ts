@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import formbody from '@fastify/formbody';
 import helmet from '@fastify/helmet';
 import fastifyStatic from '@fastify/static';

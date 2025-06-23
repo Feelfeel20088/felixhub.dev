@@ -2,7 +2,10 @@
   "name": "webserver",
   "version": "1.0.2",
   "description": "a nice webserver to house my projects and api",
-  "main": "__init__.js",
+  "bin": {
+    "felixhub-portfolio-site": "javascript-src/__init__.js"
+  },
+  "main": "javascript-src/__init__.js",
   "scripts": {
     "build": "tsc",
     "start": "node javascript-src/__init__.js",
