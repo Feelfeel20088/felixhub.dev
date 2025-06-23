@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,9 +20,11 @@
     <meta name="author" content="Felix" />
 
     <!-- Highlight.js Theme -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 </head>
+
 <body>
     <main class="documentation-container">
         <h1>Project Documentation</h1>
@@ -29,7 +32,8 @@
             This guide will help you become familiar with the bot on a deeper level.
             It’s intended for people who want to understand how the bot works and may want to contribute.
             If you're looking to deploy the bot instead of contributing, please check out the deployment guide on the
-            <a href="https://github.com/Feelfeel20088/Just_Another_Kahootbot" class="text-based-link">GitHub repository</a>
+            <a href="https://github.com/Feelfeel20088/Just_Another_Kahootbot" class="text-based-link">GitHub
+                repository</a>
             or the<a href="/projects/kahootbot_installation" class="text-based-link">installation page.</a>
         </p>
 
@@ -47,27 +51,34 @@
         <div class="text-block">
             <h2>Important Information</h2>
             <p>
-                This documentation assumes you have a solid understanding of Python. If you're not familiar with Python, I recommend reviewing the basics before proceeding.
-                While you can still follow along, some advanced features may be difficult to understand without a deeper grasp of the language. If you're interested in learning more, here are some great resources:
+                This documentation assumes you have a solid understanding of Python. If you're not familiar with Python,
+                I recommend reviewing the basics before proceeding.
+                While you can still follow along, some advanced features may be difficult to understand without a deeper
+                grasp of the language. If you're interested in learning more, here are some great resources:
             </p>
             <ul>
                 <li><a href="https://www.learnpython.org/" class="text-based-link">Learn Python</a></li>
                 <li><a href="https://realpython.com/" class="text-based-link">Real Python</a></li>
-                <li><a href="https://www.w3schools.com/python/" class="text-based-link">W3Schools Python Tutorial</a></li>
+                <li><a href="https://www.w3schools.com/python/" class="text-based-link">W3Schools Python Tutorial</a>
+                </li>
             </ul>
         </div>
 
         <div class="text-block">
-            <p>Before diving deeper, it’s important to understand how the bot is structured. It is made up of two main components:</p>
+            <p>Before diving deeper, it’s important to understand how the bot is structured. It is made up of two main
+                components:</p>
         </div>
 
         <h2>Main Components</h2>
         <ul class="doc-list">
             <li>
-                <strong>KahootBot:</strong> This is the main component you interact with. It joins games, answers questions, and makes intelligent decisions about what to do next. It uses WebSockets, as described in the installation guide.
+                <strong>KahootBot:</strong> This is the main component. It joins games, answers questions, and makes
+                intelligent decisions about what to do next. It uses WebSockets, as described in the installation guide.
             </li>
             <li>
-                <strong>Swarm:</strong> This component manages several KahootBots and ensures they’re running properly. Its primary job is to handle lifetimes, but it also acts as an event handler for certain Kahoot events and decides how to respond.
+                <strong>Swarm:</strong> This component manages several KahootBots and ensures they’re running properly.
+                Its primary job is to handle lifetimes, but it also acts as an event handler for certain Kahoot events
+                and decides how to respond.
             </li>
         </ul>
 
@@ -80,4 +91,5 @@
         </footer>
     </main>
 </body>
+
 </html>
