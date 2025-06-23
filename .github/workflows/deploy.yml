@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Install nix
+        uses: cachix/install-nix-action@v26
 
       - name: build nix image
         run: nix --extra-experimental-features 'flakes nix-command' build .#dockerImage
