@@ -12,6 +12,11 @@ let
 
     NODE_OPTIONS = "--openssl-legacy-provider";
 
+    postInstall = ''
+      mkdir -p $out/app
+      cp -r . $out/app/
+    '';
+
     meta = {
       description = "Portfolio website for Felix";
       homepage = "https://felixhub.dev";

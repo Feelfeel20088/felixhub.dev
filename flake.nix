@@ -16,14 +16,6 @@
           buildNpmPackage = pkgs.buildNpmPackage;
         });
         
-        felixhubApp = pkgs.runCommand "felixhub-app" {
-            felixhub = extendedPkgs.felixhub;
-        } ''
-            mkdir -p $out/app
-            cp -r ${extendedPkgs.felixhub}/. $out/app/
-        '';
-        
-        
       in {
         packages = {
           default = extendedPkgs.felixhub;
@@ -49,7 +41,7 @@
               name = "felixhub-docker-root";
               paths = [
                 pkgs.nodejs_22
-                felixhubApp
+                extendedPkgs.felixhub
               ];
               pathsToLink = [ "/bin" "/app" ];
             };
