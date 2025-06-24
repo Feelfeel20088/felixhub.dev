@@ -24,13 +24,13 @@
             name = "felixhub.dev";
             tag = "latest";
 
-            fromImage = pkgs.dockerTools.pullImage {
-              imageName = "paketobuildpacks/nodejs";
-              finalImageName = "paketobuildpacks/nodejs";
-              finalImageTag = "latest";
-              imageDigest = "sha256:8aaa7ef831b72dce5cfff67e5eaa651804fe43359a66c71c226651fc834ff53b";
-              sha256 = "1VxV9ibVHHN9ABqDb0da9O2B6aiZipUlR3KUnhOkfnM=";
-            };
+            # fromImage = pkgs.dockerTools.pullImage {
+            #   imageName = "paketobuildpacks/nodejs";
+            #   finalImageName = "paketobuildpacks/nodejs";
+            #   finalImageTag = "latest";
+            #   imageDigest = "sha256:8aaa7ef831b72dce5cfff67e5eaa651804fe43359a66c71c226651fc834ff53b";
+            #   sha256 = "1VxV9ibVHHN9ABqDb0da9O2B6aiZipUlR3KUnhOkfnM=";
+            # };
 
             config = {
               Cmd = [ "npm" "start" ];
