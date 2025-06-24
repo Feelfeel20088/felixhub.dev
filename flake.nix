@@ -33,7 +33,7 @@
             };
 
             config = {
-              Cmd = [ "npm" "start" ];
+              Cmd = [ "sleep" "infinity"];
               WorkingDir = "/app";
             };
 
