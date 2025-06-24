@@ -25,7 +25,7 @@
             tag = "latest";
 
             config = {
-              Cmd = [ "node" "/app/javascript-src/__init__.js" ];
+              Cmd = [ "node" "./app/javascript-src/__init__.js" ];
               WorkingDir = "/app";
             };
 
