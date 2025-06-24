@@ -26,7 +26,7 @@
 
             config = {
               Cmd = [ "npm" "start" ];
-              WorkingDir = "/app";
+              WorkingDir = "/";
             };
 
             copyToRoot = pkgs.buildEnv {
@@ -35,7 +35,7 @@
                 pkgs.nodejs
                 extendedPkgs.felixhub
               ];
-              pathsToLink = [ "/bin" "/app" ];
+              pathsToLink = [ "/" ];
             };
           };
         };

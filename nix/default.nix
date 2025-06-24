@@ -13,7 +13,7 @@ let
     NODE_OPTIONS = "--openssl-legacy-provider";
 
     meta = {
-      description = "Portfolio website for Felix Vujasin";
+      description = "Portfolio website for Felix";
       homepage = "https://felixhub.dev";
       license = lib.licenses.gpl3Only;
       maintainers = with lib.maintainers; [ felix ];
