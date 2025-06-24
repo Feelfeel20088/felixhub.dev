@@ -25,7 +25,7 @@
             tag = "latest";
 
             config = {
-              Cmd = [ "node" "start" ];
+              Cmd = [ "npm" "start" ];
               WorkingDir = "/app";
             };
 
