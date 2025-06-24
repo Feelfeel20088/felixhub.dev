@@ -15,6 +15,15 @@
           lib = pkgs.lib;
           buildNpmPackage = pkgs.buildNpmPackage;
         };
+
+        # Wrap felixhub output so files appear under /app
+        felixHubDockerImage = pkgs.runCommand "felixhub-app" {
+          inherit felixhub;
+        } ''
+          mkdir -p $out/app
+          cp -r ${felixhub}/. $out/app/
+        '';
+
         extendedPkgs = pkgs.extend felixhub;
       in {
         packages = {
@@ -24,13 +33,15 @@
             name = "felixhub.dev";
             tag = "latest";
 
-            fromImage = pkgs.dockerTools.pullImage {
-              imageName = "paketobuildpacks/nodejs";
-              finalImageName = "paketobuildpacks/nodejs";
-              finalImageTag = "latest";
-              imageDigest = "sha256:8aaa7ef831b72dce5cfff67e5eaa651804fe43359a66c71c226651fc834ff53b";
-              sha256 = "1VxV9ibVHHN9ABqDb0da9O2B6aiZipUlR3KUnhOkfnM=";
-            };
+            # Optionally, you can drop 'fromImage' here to have
+            # a pure nix-built image or keep your base image if you want
+            # fromImage = pkgs.dockerTools.pullImage {
+            #   imageName = "paketobuildpacks/nodejs";
+            #   finalImageName = "paketobuildpacks/nodejs";
+            #   finalImageTag = "latest";
+            #   imageDigest = "sha256:8aaa7ef831b72dce5cfff67e5eaa651804fe43359a66c71c226651fc834ff53b";
+            #   sha256 = "1VxV9ibVHHN9ABqDb0da9O2B6aiZipUlR3KUnhOkfnM=";
+            # };
 
             config = {
               Cmd = [ "npm" "start" ];
@@ -41,7 +52,7 @@
               name = "felixhub-docker-root";
               paths = [
                 pkgs.nodejs_22
-                extendedPkgs.felixhub
+                felixHubDockerImage
               ];
               pathsToLink = [ "/bin" "/app" ];
             };
