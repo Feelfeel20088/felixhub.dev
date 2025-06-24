@@ -24,18 +24,23 @@
             name = "felixhub.dev";
             tag = "latest";
 
+            fromImage = pkgs.dockerTools.pullImage {
+              imageName = "paketobuildpacks/nodejs";
+              finalImageTag = "latest";
+              sha256 = "sha256-1VxV9ibVHHN9ABqDb0da9O2B6aiZipUlR3KUnhOkfnM=";
+              imageDigest = "sha256-1VxV9ibVHHN9ABqDb0da9O2B6aiZipUlR3KUnhOkfnM=";
+            };
             config = {
               Cmd = [ "npm" "start" ];
-              WorkingDir = "/";
+              WorkingDir = "/app";
             };
 
             copyToRoot = pkgs.buildEnv {
               name = "felixhub-docker-root";
               paths = [
-                pkgs.nodejs
                 extendedPkgs.felixhub
               ];
-              pathsToLink = [ "/" ];
+              pathsToLink = [ "/app" ];
             };
           };
         };
