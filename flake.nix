@@ -10,21 +10,20 @@
       systems = flake-utils.lib.defaultSystems;
 
       perSystem = { system, pkgs, ... }: let
-        felixhub = import ./nix/default.nix {
+        extendedPkgs = pkgs.extend (import ./nix/default.nix {
           inherit pkgs;
           lib = pkgs.lib;
           buildNpmPackage = pkgs.buildNpmPackage;
-        };
-
-        # Wrap felixhub output so files appear under /app
-        felixHubDockerImage = pkgs.runCommand "felixhub-app" {
-          inherit felixhub;
+        });
+        
+        felixhubApp = pkgs.runCommand "felixhub-app" {
+            felixhub = extendedPkgs.felixhub;
         } ''
-          mkdir -p $out/app
-          cp -r ${felixhub}/. $out/app/
+            mkdir -p $out/app
+            cp -r ${extendedPkgs.felixhub}/. $out/app/
         '';
-
-        extendedPkgs = pkgs.extend felixhub;
+        
+        
       in {
         packages = {
           default = extendedPkgs.felixhub;
@@ -33,8 +32,6 @@
             name = "felixhub.dev";
             tag = "latest";
 
-            # Optionally, you can drop 'fromImage' here to have
-            # a pure nix-built image or keep your base image if you want
             # fromImage = pkgs.dockerTools.pullImage {
             #   imageName = "paketobuildpacks/nodejs";
             #   finalImageName = "paketobuildpacks/nodejs";
@@ -52,7 +49,7 @@
               name = "felixhub-docker-root";
               paths = [
                 pkgs.nodejs_22
-                felixHubDockerImage
+                felixhubApp
               ];
               pathsToLink = [ "/bin" "/app" ];
             };
