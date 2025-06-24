@@ -41,6 +41,7 @@
               name = "felixhub-docker-root";
               paths = [
                 extendedPkgs.felixhub
+                pkgs.nodejs
               ];
               pathsToLink = [ "/app" ];
             };
