@@ -85,8 +85,6 @@ const addLinkButton = async (
 ) => {
   try {
     const res = await fetch(url, { method: 'HEAD' });
-    console.log(url);
-    console.log(res.status);
     if (res.status === 404) {
       console.warn(`Skipping ${text} for ${url}: 404 Not Found`);
       return;
