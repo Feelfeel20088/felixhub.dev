@@ -1,6 +1,6 @@
-{pkgs, lib, buildNpmPackage}: final: prev:
-let
-  felixhub = buildNpmPackage {
+{pkgs}: final: prev:
+let 
+  felixhub = (with pkgs; buildNpmPackage {
     pname = "felixhub-portfolio-site";
     version = "1.0";
 
@@ -11,6 +11,12 @@ let
     npmPackFlags = [ "--ignore-scripts" ];
 
     NODE_OPTIONS = "--openssl-legacy-provider";
+
+    buildInputs = [ typescript ];
+
+    build = ''
+      tsc
+    '';
 
     postInstall = ''
       mkdir -p $out/app
@@ -23,7 +29,7 @@ let
       license = lib.licenses.gpl3Only;
       maintainers = with lib.maintainers; [ felix ];
     };
-  };
+  });
 in {
   inherit felixhub;
 }

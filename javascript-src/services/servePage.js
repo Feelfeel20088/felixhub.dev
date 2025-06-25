@@ -18,17 +18,16 @@ const RootFelixHubServiceBase_1 = __importDefault(require("../utility/RootFelixH
 class ServePageService extends RootFelixHubServiceBase_1.default {
     callBack(req, reply) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _a;
+            var _a, _b, _c;
             const fileName = (_a = this.params) === null || _a === void 0 ? void 0 : _a.fileName;
-            console.log(fileName);
-            if (!fileName) {
-                reply.status(400).send('Missing fileName parameter');
-                return;
-            }
+            const code = (_c = (_b = this.params) === null || _b === void 0 ? void 0 : _b.code) !== null && _c !== void 0 ? _c : 200;
             try {
                 const filePath = path_1.default.join(__dirname, "..", "..", "static", fileName);
                 const data = yield promises_1.default.readFile(filePath, "utf-8");
-                reply.type("text/html").send(data);
+                reply
+                    .type("text/html")
+                    .status(code)
+                    .send(data);
             }
             catch (err) {
                 reply.status(500).send("Error reading the HTML file");

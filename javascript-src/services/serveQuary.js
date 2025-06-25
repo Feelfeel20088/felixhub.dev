@@ -12,10 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const path_1 = __importDefault(require("path"));
 const promises_1 = __importDefault(require("fs/promises"));
-const ApiFelixHubServiceBase_1 = __importDefault(require("../utility/ApiFelixHubServiceBase"));
-class FelixHubServeQueryService extends ApiFelixHubServiceBase_1.default {
+const path_1 = __importDefault(require("path"));
+const RootFelixHubServiceBase_1 = __importDefault(require("../utility/RootFelixHubServiceBase"));
+class FelixHubServeQueryService extends RootFelixHubServiceBase_1.default {
     // Override the callback method to implement the service logic
     callBack(req, reply) {
         return __awaiter(this, void 0, void 0, function* () {

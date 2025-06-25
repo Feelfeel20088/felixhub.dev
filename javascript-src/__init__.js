@@ -56,7 +56,7 @@ server.listen({ host: '0.0.0.0', port: 8080 }, (err, address) => {
     yield felixhub.route("GET", "/Just_Another_Kahootbot:projectName", { folder: "../static/documentation/Just_Another_Kahootbot" }, "serveQuary");
     yield felixhub.route("POST", "/chat", null, "AI-service");
     yield felixhub.route("POST", "/kahootswarm", null, "kahootBot-service");
-    yield felixhub.setNotFoundHandler({ fileName: "404notfound.html" }, "servePage");
+    yield felixhub.setNotFoundHandler({ fileName: "404notfound.html", code: 404 }, "servePage");
 }))();
 // Create WebSocket server
 // const wss = new WebSocketServer({ port: 9111 });

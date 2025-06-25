@@ -12,8 +12,6 @@
       perSystem = { system, pkgs, ... }: let
         extendedPkgs = pkgs.extend (import ./nix/default.nix {
           inherit pkgs;
-          lib = pkgs.lib;
-          buildNpmPackage = pkgs.buildNpmPackage;
         });
         
       in {
