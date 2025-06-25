@@ -1,9 +1,11 @@
-name: Build & Deploy Docker Container
+name: Build & Deploy Docker Container (CI/CD)
+
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
-    types:
-      - closed
     branches:
       - main
 
