@@ -14,8 +14,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const addLinkButton = (container, url, text) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const res = yield fetch(url, { method: 'HEAD' });
-        console.log(url);
-        console.log(res.status);
         if (res.status === 404) {
             console.warn(`Skipping ${text} for ${url}: 404 Not Found`);
             return;

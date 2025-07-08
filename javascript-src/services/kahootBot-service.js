@@ -31,7 +31,7 @@ class kahootBotStartSwarm extends RootFelixHubServiceBase_1.default {
                 req.body.gamepin = gamepin;
             }
             try {
-                const response = yield fetch(URLS_1.default.kahootbot_internal, {
+                const response = yield fetch(URLS_1.default.kahootbot_local, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

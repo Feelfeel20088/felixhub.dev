@@ -36,6 +36,7 @@
     "fastify-favicon": "^5.0.0",
     "fs": "latest",
     "highlight.js": "^11.11.1",
+    "lodash": "^4.17.21",
     "mysql2": "^3.12.0",
     "path": "latest",
     "ws": "^8.18.1"

@@ -5,8 +5,9 @@ let
     version = "1.0";
 
     src = ../.;
+    # sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+    npmDepsHash = "sha256-5IUp8HYCd9/qvGqENftNyQuKSvJ1Gj2hMW29hmp2xQ8=";
 
-    npmDepsHash = "sha256-ap2iD0tZnivycTiDLuFsCuGeXp+291DM/ljq3nh1to4=";
 
     npmPackFlags = [ "--ignore-scripts" ];
 

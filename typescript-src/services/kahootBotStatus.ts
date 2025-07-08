@@ -3,7 +3,7 @@ import URL from '../utility/config/URLS';
 import RootFelixHubServiceBase from '../utility/RootFelixHubServiceBase';
 
 
-export default class kahootBotStartSwarm extends RootFelixHubServiceBase {
+export default class kahootBotStatus extends RootFelixHubServiceBase {
 
     // ttl default if not provided is 10
     async callBack(req: FastifyRequest<{
