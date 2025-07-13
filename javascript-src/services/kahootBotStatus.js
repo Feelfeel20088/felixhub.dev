@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const URLS_1 = __importDefault(require("../utility/config/URLS"));
 const RootFelixHubServiceBase_1 = __importDefault(require("../utility/RootFelixHubServiceBase"));
-class kahootBotStartSwarm extends RootFelixHubServiceBase_1.default {
+class kahootBotStatus extends RootFelixHubServiceBase_1.default {
     // ttl default if not provided is 10
     callBack(req, reply) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -31,7 +31,7 @@ class kahootBotStartSwarm extends RootFelixHubServiceBase_1.default {
                 req.body.gamepin = gamepin;
             }
             try {
-                const response = yield fetch(URLS_1.default.kahootbot_local + "/swarm/createSwarm", {
+                const response = yield fetch(URLS_1.default.kahootbot_internal + "/swarm/createSwarm", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -56,4 +56,4 @@ class kahootBotStartSwarm extends RootFelixHubServiceBase_1.default {
         });
     }
 }
-exports.default = kahootBotStartSwarm;
+exports.default = kahootBotStatus;

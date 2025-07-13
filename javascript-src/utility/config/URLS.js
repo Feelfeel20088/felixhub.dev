@@ -9,8 +9,8 @@ exports.default = new class URLS {
         // henrys mac mini 
         // kahootbot
         // swarm endpoint: creates a swarm
-        this.kahootbot_internal = 'http://just-another-kahoot-bot-internal.just-another-kahoot-bot.svc.cluster.local:8000/swarm';
-        this.kahootbot_external = 'http://192.168.70.20:30005/swarm';
-        this.kahootbot_local = 'http://127.0.0.1:8000/swarm';
+        this.kahootbot_internal = 'http://just-another-kahoot-bot-internal.just-another-kahoot-bot.svc.cluster.local:8000';
+        this.kahootbot_external = 'http://192.168.70.20:30005';
+        this.kahootbot_local = 'http://127.0.0.1:8000';
     }
 };
