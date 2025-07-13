@@ -3,3 +3,4 @@ typescript
 .gitignore
 Dockerfile
 .dockerignore
+.result

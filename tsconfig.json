@@ -1,17 +1,23 @@
 {
   "compilerOptions": {
-    "outDir": "javascript-src", 
-    "rootDir": "typescript-src",
-    "strict": true, 
+    "outDir": "javascript-src",
+    "rootDir": "src",
+    "strict": true,
     "target": "ES6",
     "module": "commonjs",
     "moduleResolution": "node",
-    "esModuleInterop": true, 
+    "esModuleInterop": true,
     "skipLibCheck": false,
-    "forceConsistentCasingInFileNames": true, 
-    "types": ["node"]
-    
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "node"
+    ]
   },
-  "include": ["typescript-src/**/*", "typescript-src/controllers", "typescript-src/routes", "static/clientSide"], // Include all files in the typescript directory
-  "exclude": ["node_modules", "**/*.test.ts"] // Exclude node_modules and test files
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts"
+  ]
 }
